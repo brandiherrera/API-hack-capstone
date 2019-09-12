@@ -7,15 +7,16 @@ function formatQueryParams(params) {
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
         console.log("formatQueryParams complete");
         return queryItems.join('&');
-
 }
 
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
     /*$('#js-results').empty();
     console.log("empty working");*/
+    let kelvin = responseJson.list[0].main.temp 
+    let farenheit = (kelvin * (9/5)) - 459.67
     $('.weather').append(
-        `<p>"${responseJson.list[0].main.temp}"</p>`
+        `<p>${farenheit.toFixed(0)}</p>`
     )
     $('.main').removeClass('hidden')
 }
@@ -25,7 +26,6 @@ function getWeather(citySearch) {
         q: citySearch,
         APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
     };
-
     const queryString = formatQueryParams(params);
     const url = weatherUrl + '?' + queryString;
 
@@ -42,6 +42,7 @@ function getWeather(citySearch) {
         });
         console.log("getWeather working");
 }
+
 
 function getCityResults(citySearch) {
     console.log("getCityResults working")
