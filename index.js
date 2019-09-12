@@ -1,5 +1,5 @@
 
-const weatherUrl = "https://api.openweathermap.org/data/2.5/find"
+const weatherUrl = "https://api.openweathermap.org/data/2.5/weather"
 
 
 function formatQueryParams(params) {
@@ -13,22 +13,24 @@ function displayWeatherResults(responseJson) {
     console.log(responseJson);
     /*$('#js-results').empty();
     console.log("empty working");*/
-    let kelvin = responseJson.list[0].main.temp 
+    let kelvin = responseJson.main.temp 
     let farenheit = (kelvin * (9/5)) - 459.67
     $('.weather').append(
-        `<p>${farenheit.toFixed(0)}</p>`
+        `<p>Temperature: ${farenheit.toFixed(0)}°F</p>`
     )
     $('.main').removeClass('hidden')
 }
 
 function getWeather(citySearch) {
+    /*let cityId = document.getElementsByName('js-city-search');
+    */
     const params = {
-        q: citySearch,
+        id: citySearch,
         APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
     };
     const queryString = formatQueryParams(params);
     const url = weatherUrl + '?' + queryString;
-
+    console.log(url);
     fetch(url)
         .then(response => {
             if (response.ok) {
