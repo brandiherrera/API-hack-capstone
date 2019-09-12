@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: sans-serif;
     padding: 30px;
@@ -6,4 +10,42 @@ body {
 header {
     padding-top: 10%;
     text-align: center;
+}
+
+button {
+    background-color: slategray;
+}
+
+.hidden {
+    display: none;
+}
+
+main {
+    padding-top: 400px;
+}
+
+/*div {
+    padding: 5px;
+}*/
+.results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 50px;
+    border: 1px, solid black;
+    background-color: #cccccc;
+}
+
+.wiki {
+    display: block;
+    text-align: center;
+    border: 10px, solid black;
+    padding: 50px;
+    background-color: #cccccc;
+}
+
+
+
+.footer {
+    float: right;
 }
