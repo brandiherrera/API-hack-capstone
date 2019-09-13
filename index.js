@@ -2,6 +2,7 @@
 
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather"
 const newsUrl = "https://newsapi.org/v2/everything"
+const youtubeUrl = "https://www.googleapis.com/youtube/v3/search"
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
@@ -102,7 +103,6 @@ function getWiki(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     console.log(cityNameOnly);
-
     let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|info|description|extracts&explaintext&exsentences=10&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
     console.log(url);
     fetch(url)
@@ -119,6 +119,44 @@ function getWiki(cityName) {
         console.log("getWiki working");
 }
 
+function displayYoutubeResults(responseJson) {
+    console.log(responseJson)
+    for (let i=0; i<10; i++) {
+    let video = responseJson.items[i];
+    $('.youtube').append(
+        `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
+        
+        <img class="videoPic" src='https://www.youtube.com/watch?v=${responseJson.items[i].snippet.thumbnails.high.url}' />
+        </section>`
+    )};
+}
+
+function getYoutube(cityName) {
+    const strCityName = cityName;
+    const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
+    const params = {
+        part: 'snippet',
+        type: 'video',
+        q: cityNameOnly,
+        maxResults: '10',
+        key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
+    }
+    const queryString = formatQueryParams(params);
+    const url = youtubeUrl + '?' + queryString;
+    console.log(url);
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayYoutubeResults(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong, please try again.`);
+        });
+        console.log("getYoutube working");
+}
 
 function getCityResults(cityId) {
     console.log("getCityResults working")
@@ -129,6 +167,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
+    getYoutube(cityName);
 }
 
 function startSearch() {
