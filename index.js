@@ -49,7 +49,7 @@ function displayNewsResults(responseJson) {
     
     for (let i=0; i<10; i++) {
     let articleTitle = responseJson.articles[i].title;
-    console.log(articleTitle);
+    /*console.log(articleTitle);*/
     $('.news').append(
         `<p>${articleTitle}</p>
         `
@@ -61,10 +61,10 @@ function displayNewsResults(responseJson) {
 function getNews(cityName) {
     const strCityName = cityName;
     console.log(strCityName);
-    const query = strCityName.split(",").shift();
-    console.log(query);
+    const cityNameOnly = strCityName.split(",").shift();
+    console.log(cityNameOnly);
     const params = {
-        q: query,
+        q: cityNameOnly,
         apiKey: '5358d981d8e94c6ca98e1b3831164df1'
     }
     const queryString = formatQueryParams(params);
@@ -84,6 +84,41 @@ function getNews(cityName) {
         console.log("getNews working");
 }
 
+function displayWikiResults(responseJson) {
+    console.log(responseJson);
+    let pagesIdSearch = Object.keys(responseJson.query.pages);
+    let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
+    let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
+    $('.wiki').append(
+        `<p>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</p>
+        <p>${responseJson.query.pages[wikiPagesId].extract}</p>
+        <img id="city-image" src="${wikiPic}" />
+        `
+    )
+    console.log("getWikiResults working");
+}
+
+function getWiki(cityName) {
+    const strCityName = cityName;
+    const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
+    console.log(cityNameOnly);
+
+    let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|info|description|extracts&explaintext&exsentences=10&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
+    console.log(url);
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayWikiResults(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong, please try again.`);
+        });
+        console.log("getWiki working");
+}
+
 
 function getCityResults(cityId) {
     console.log("getCityResults working")
@@ -93,6 +128,7 @@ function getCityResults(cityId) {
 function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
+    getWiki(cityName);
 }
 
 function startSearch() {
