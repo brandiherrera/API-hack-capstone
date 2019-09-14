@@ -45,7 +45,13 @@ main {
     padding: 50px;
     background-color: #cccccc;
 }
-
+.news img {
+    width: 80%;
+}
+.youtube img {
+    width: 90%;
+    border-radius: 5px;
+}
 .footer {
     float: right;
 }

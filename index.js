@@ -53,6 +53,7 @@ function displayNewsResults(responseJson) {
     /*console.log(articleTitle);*/
     $('.news').append(
         `<p>${articleTitle}</p>
+        <img src="${responseJson.articles[i].urlToImage}" />
         `
     )};
     console.log("displayNewsResults working");
@@ -126,7 +127,7 @@ function displayYoutubeResults(responseJson) {
     $('.youtube').append(
         `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
         
-        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}}"><img class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         </section>`
     )};
 }
