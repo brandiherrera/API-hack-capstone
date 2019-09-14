@@ -27,20 +27,25 @@
     </header>
     
     <main role="main" class="main hidden">
-            <div class="wiki"><h2>wiki</h2></div>
+            <div class="wiki"><h2>wiki</h2>
+                <div id="wikiResults"></div>
+            </div>
+
         <section id="js-results" class="results">
-            <!--<ul role="listbox">-->
                 <div class="weather"><h2>weather</h2>
-                    <div id="openweathermap-widget-12"></div>
+                    <div id="weatherResults"></div>
                 </div>
-                <div class="news"><h2>news</h2></div>
-                <div class="youtube"><h2>youtube</h2></div>
-            <!--</ul>-->
+                <div class="news"><h2>news</h2>
+                    <div id="newsResults"></div>
+                </div>
+                <div class="youtube"><h2>youtube</h2>
+                    <div id="youtubeResults"></div>
+                </div>
         </section>
 
         <section id="js-error-message" class="error-message"></section>
         <footer role="contentinfo" id="footer" class="footer">
-            <button type="submit" name="another-city" id="js-another-city"><a href="#header">explore another city</a></button>
+            <button type="submit" class="restart"><!--<a href="#header">explore another city</a>-->explore another city</button>
         </footer>
 
     </main>

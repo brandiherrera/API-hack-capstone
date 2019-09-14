@@ -17,12 +17,13 @@ function displayWeatherResults(responseJson) {
     console.log("empty working");*/
     let kelvin = responseJson.main.temp 
     let fahrenheit = (kelvin * (9/5)) - 459.67
-    $('.weather').append(
+    /*$('#weatherResults').empty();*/
+    $('#weatherResults').append(
         `<p>Temperature: ${fahrenheit.toFixed(0)}°F</p>
         <p>Cloud cover: ${responseJson.weather[0].description}</p>
         `
     )
-    $('.main').removeClass('hidden')
+    
 }
 
 
@@ -55,8 +56,8 @@ function displayNewsResults(responseJson) {
     
     for (let i=0; i<10; i++) {
     let articleTitle = responseJson.articles[i].title;
-    /*console.log(articleTitle);*/
-    $('.news').append(
+    /*$('#newsResults').empty();*/
+    $('#newsResults').append(
         `<p>${articleTitle}</p>
         <p>Source: ${responseJson.articles[i].source.name}</p>
         <img src="${responseJson.articles[i].urlToImage}" />
@@ -97,7 +98,8 @@ function displayWikiResults(responseJson) {
     let pagesIdSearch = Object.keys(responseJson.query.pages);
     let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
     let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
-    $('.wiki').append(
+    /*$('#wikiResults').empty();*/
+    $('#wikiResults').append(
         `<p>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</p>
         <p>${responseJson.query.pages[wikiPagesId].extract}</p>
         <img id="city-image" src="${wikiPic}" />
@@ -130,7 +132,8 @@ function displayYoutubeResults(responseJson) {
     console.log(responseJson)
     for (let i=0; i<10; i++) {
     let video = responseJson.items[i];
-    $('.youtube').append(
+    /*$('#youtubeResults').empty();*/
+    $('#youtubeResults').append(
         `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
         <p>${responseJson.items[i].snippet.description}</p>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
@@ -168,6 +171,8 @@ function getYoutube(cityName) {
 function getCityResults(cityId) {
     console.log("getCityResults working")
     getWeather(cityId);
+
+    
 }
 
 function getMoreCityResults(cityName) {
@@ -175,6 +180,8 @@ function getMoreCityResults(cityName) {
     getNews(cityName);
     getWiki(cityName);
     getYoutube(cityName);
+    $('#header').addClass('hidden');
+    $('.main').removeClass('hidden');
 }
 
 function startSearch() {
@@ -186,21 +193,18 @@ function startSearch() {
         console.log(cityName);
         getCityResults(cityId);
         console.log("getCityResults working");
-        getMoreCityResults(cityName) 
+        getMoreCityResults(cityName);
+        
+        
     });
 }
 
 
-
-/*
-function anotherSearch() {
-    $('#footer').on('click', '#js-another-city', function(event) {
-        document.getElementById('form').reset();
-        $('.js-city-search').emtpy();
-        console.log("anotherSearch working");
-    });
-}
-*/
+$('.restart').on('click', function(event) {
+    event.preventDefault();
+    location.reload();
+    console.log("restartSearch working");
+});
 
 $(function() {
     console.log("app working"); 
