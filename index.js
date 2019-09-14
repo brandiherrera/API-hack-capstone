@@ -147,7 +147,7 @@ function getYoutube(cityName) {
     const params = {
         part: 'snippet',
         type: 'video',
-        q: cityNameOnly,
+        q: 'travel&'+cityNameOnly,
         maxResults: '10',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
