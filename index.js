@@ -17,14 +17,23 @@ function displayWeatherResults(responseJson) {
     console.log("empty working");*/
     let kelvin = responseJson.main.temp 
     let fahrenheit = (kelvin * (9/5)) - 459.67
+    let cityName = $('option:selected').text();
     /*$('#weatherResults').empty();*/
     $('#weatherResults').append(
-        `<p>Temperature: ${fahrenheit.toFixed(0)}°F</p>
-        <p>Cloud cover: ${responseJson.weather[0].description}</p>
+        `<div class="weather-container">
+        <p>Weather for ${cityName}</p>
+        <img src="http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@2x.png" />
+        <p>${fahrenheit.toFixed(0)}°F</p>
+        <p>Wind: ${responseJson.wind.speed} m/h ${responseJson.weather[0].description}</p>
+        </div>
         `
-    )
-    
+    );
+    /*
+    $('#openweathermap-widget-12').append(
+        `<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 12,cityid: ${cityId},appid: 'c894bfba04e757cc13b20cad7b39e4c6',units: 'imperial',containerid: 'openweathermap-widget-12',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>`
+    );*/
 }
+
 
 
 function getWeather(cityId) {
@@ -54,7 +63,7 @@ function getWeather(cityId) {
 function displayNewsResults(responseJson) {
     console.log(responseJson);
     
-    for (let i=0; i<10; i++) {
+    for (let i=0; i<6; i++) {
     let articleTitle = responseJson.articles[i].title;
     /*$('#newsResults').empty();*/
     $('#newsResults').append(

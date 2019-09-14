@@ -56,5 +56,23 @@ main {
     width: 100%;
 }
 .footer {
-    float: right;
+    text-align: center;
 }
+.weather-container {
+    background-color: rgb(179, 230, 236);
+    border-radius: 10px;
+    box-shadow: black 5px;
+    padding: 3%;
+    width: 75%;
+    text-align: center;
+    box-shadow: 5px 10px grey;
+}
+.weather-container:hover {
+    background-color: blue;
+}
+
+/*USE BELOW FOR SEPARATING SECTIONS
+.weather, .news, .youtube div {
+    border:white solid 5px;
+}
+*/
