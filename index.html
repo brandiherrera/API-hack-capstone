@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="API hack capstone featuring an app to explore various travel destinations.">
+    <meta name="description" content="Explore various destinations around the globe.">
     <title>API Hack Capstone - Explore Travel Destinations</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
     <link rel="stylesheet" type="text/css" href="index.css">
@@ -16,11 +16,11 @@
     <header role="banner" id="header">
         <h1>enter your next travel destination</h1>
         <form class="js-form" id="form" role="form">
-            <!--<label for="city-search"></label>
-            <input list="js-city-search" required>-->
             <select name="js-city-search" id="js-city-search">
-                
                 <option value="4726311" name="city-name">San Diego, US</option>
+                <option value="2172517">Canberra, Australia</option>
+                <option value="2761369">Vienna, Austria</option>
+
             </select>
             <button type="submit">start exploring</button>
         </form>
@@ -30,11 +30,11 @@
             <div class="wiki"><h2>wiki</h2></div>
         <section id="js-results" class="results">
             <!--<ul role="listbox">-->
-                <div class="weather"><h2>weather</h2></div>
-                <div class="news"><h2>news</h2></div>
-                <div class="youtube"><h2>youtube</h2>
-                    <section class="youtubeResults"></section>
+                <div class="weather"><h2>weather</h2>
+                    <div id="openweathermap-widget-12"></div>
                 </div>
+                <div class="news"><h2>news</h2></div>
+                <div class="youtube"><h2>youtube</h2></div>
             <!--</ul>-->
         </section>
 
@@ -47,6 +47,7 @@
 
 
     <script src="index.js"></script>
+    
 </body>
 
 

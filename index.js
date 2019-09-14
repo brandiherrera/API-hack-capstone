@@ -25,6 +25,7 @@ function displayWeatherResults(responseJson) {
     $('.main').removeClass('hidden')
 }
 
+
 function getWeather(cityId) {
     const params = {
         id: cityId,
@@ -46,6 +47,8 @@ function getWeather(cityId) {
         });
         console.log("getWeather working");
 }
+
+
 
 function displayNewsResults(responseJson) {
     console.log(responseJson);
@@ -178,7 +181,7 @@ function startSearch() {
     $('form').submit(event => {
         event.preventDefault();
         const cityId = $('#js-city-search').val();
-        const cityName = $('option').text();
+        const cityName = $('option:selected').text();
         console.log(cityId);
         console.log(cityName);
         getCityResults(cityId);
