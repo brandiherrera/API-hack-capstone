@@ -52,6 +52,9 @@ main {
     width: 90%;
     border-radius: 5px;
 }
+.wiki img {
+    width: 100%;
+}
 .footer {
     float: right;
 }

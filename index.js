@@ -18,7 +18,9 @@ function displayWeatherResults(responseJson) {
     let kelvin = responseJson.main.temp 
     let fahrenheit = (kelvin * (9/5)) - 459.67
     $('.weather').append(
-        `<p>Temperature: ${fahrenheit.toFixed(0)}°F</p>`
+        `<p>Temperature: ${fahrenheit.toFixed(0)}°F</p>
+        <p>Cloud cover: ${responseJson.weather[0].description}</p>
+        `
     )
     $('.main').removeClass('hidden')
 }
@@ -53,6 +55,7 @@ function displayNewsResults(responseJson) {
     /*console.log(articleTitle);*/
     $('.news').append(
         `<p>${articleTitle}</p>
+        <p>Source: ${responseJson.articles[i].source.name}</p>
         <img src="${responseJson.articles[i].urlToImage}" />
         `
     )};
@@ -104,7 +107,7 @@ function getWiki(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     console.log(cityNameOnly);
-    let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|info|description|extracts&explaintext&exsentences=10&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
+    let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|images|info|description|extracts&piprop=thumbnail&pithumbsize=1020&explaintext&exsentences=10&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
     console.log(url);
     fetch(url)
         .then(response => {
@@ -126,7 +129,7 @@ function displayYoutubeResults(responseJson) {
     let video = responseJson.items[i];
     $('.youtube').append(
         `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
-        
+        <p>${responseJson.items[i].snippet.description}</p>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         </section>`
     )};
