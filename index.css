@@ -24,9 +24,6 @@ main {
     padding-top: 30px;
 }
 
-/*div {
-    padding: 5px;
-}*/
 .results {
     display: flex;
     flex-direction: row;
@@ -35,8 +32,8 @@ main {
     border: 1px, solid black;
     background-color: #cccccc;
 }
-.weather, .news, .youtube {
-    width: 30%;
+.news, .youtube {
+    width: 45%;
 }
 .wiki {
     display: block;
@@ -45,8 +42,22 @@ main {
     padding: 50px;
     background-color: #cccccc;
 }
+
 .news img {
-    width: 80%;
+    width: 50%;
+    position: relative;
+    float: left;
+    padding-right: 3%;
+}
+#newsResults {
+    height: 60%;
+    overflow-y: scroll;
+}
+#newsArticle {
+    padding: 3%;
+}
+#newsArticle:hover {
+    background-color: whitesmoke;
 }
 .youtube img {
     width: 90%;
@@ -63,16 +74,49 @@ main {
     border-radius: 10px;
     box-shadow: black 5px;
     padding: 3%;
-    width: 75%;
+    width: 100%;
     text-align: center;
     box-shadow: 5px 10px grey;
+    margin-bottom: 3%;
 }
 .weather-container:hover {
     background-color: blue;
 }
+
 
 /*USE BELOW FOR SEPARATING SECTIONS
 .weather, .news, .youtube div {
     border:white solid 5px;
 }
 */
+
+
+
+
+.popup-overlay {
+    /*Hides pop-up when there is no "active" class*/
+    visibility: hidden;
+    position: absolute;
+    background: #ffffff;
+    border: 3px solid #666666;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+  }
+  
+  .popup-overlay.active {
+    /*displays pop-up when "active" class is present*/
+    visibility: visible;
+    text-align: center;
+  }
+  
+  .popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    visibility: hidden;
+  }
+  
+  .popup-content.active {
+    /*Shows pop-up content when "active" class is present */
+    visibility: visible;
+  }
+  

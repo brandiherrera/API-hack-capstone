@@ -34,8 +34,6 @@ function displayWeatherResults(responseJson) {
     );*/
 }
 
-
-
 function getWeather(cityId) {
     const params = {
         id: cityId,
@@ -67,13 +65,34 @@ function displayNewsResults(responseJson) {
     let articleTitle = responseJson.articles[i].title;
     /*$('#newsResults').empty();*/
     $('#newsResults').append(
-        `<p>${articleTitle}</p>
-        <p>Source: ${responseJson.articles[i].source.name}</p>
-        <img src="${responseJson.articles[i].urlToImage}" />
         `
-    )};
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <h>${articleTitle}</h2>
+                <p>${responseJson.articles[i].content}</p>
+                <button class="close">close</button> 
+            </div>
+        </div>
+            <button class="open">read more</button>
+        <section id="newsArticle" class="articles">
+        <img src="${responseJson.articles[i].urlToImage}" />
+        <h3>${articleTitle}</h3>
+        <p>${responseJson.articles[i].description}</p>
+        </section>
+        <br>
+        
+        `
+        )};
+    $("#newsArticle").on("click", function() {
+        $(".popup-overlay, .popup-content").addClass("active");
+    });
+    $(".close, .popup-overlay").on("click", function() {
+        $(".popup-overlay, .popup-content").removeClass("active");
+    });
     console.log("displayNewsResults working");
 }
+/*<p>By ${responseJson.articles[i].author}, ${responseJson.articles[i].source.name}</p>*/
+
 
 
 function getNews(cityName) {
@@ -107,7 +126,6 @@ function displayWikiResults(responseJson) {
     let pagesIdSearch = Object.keys(responseJson.query.pages);
     let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
     let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
-    /*$('#wikiResults').empty();*/
     $('#wikiResults').append(
         `<p>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</p>
         <p>${responseJson.query.pages[wikiPagesId].extract}</p>
@@ -121,7 +139,7 @@ function getWiki(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     console.log(cityNameOnly);
-    let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|images|info|description|extracts&piprop=thumbnail&pithumbsize=1020&explaintext&exsentences=10&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
+    let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|images|info|description|extracts&piprop=thumbnail&pithumbsize=1020&explaintext&exsentences=4&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
     console.log(url);
     fetch(url)
         .then(response => {
@@ -141,11 +159,10 @@ function displayYoutubeResults(responseJson) {
     console.log(responseJson)
     for (let i=0; i<10; i++) {
     let video = responseJson.items[i];
-    /*$('#youtubeResults').empty();*/
     $('#youtubeResults').append(
         `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
         <p>${responseJson.items[i].snippet.description}</p>
-        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         </section>`
     )};
 }
@@ -155,9 +172,10 @@ function getYoutube(cityName) {
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     const params = {
         part: 'snippet',
+        fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '10',
+        maxResults: '6',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -180,8 +198,6 @@ function getYoutube(cityName) {
 function getCityResults(cityId) {
     console.log("getCityResults working")
     getWeather(cityId);
-
-    
 }
 
 function getMoreCityResults(cityName) {
@@ -207,6 +223,7 @@ function startSearch() {
         
     });
 }
+
 
 
 $('.restart').on('click', function(event) {

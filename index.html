@@ -20,35 +20,33 @@
                 <option value="4726311" name="city-name">San Diego, US</option>
                 <option value="2172517">Canberra, Australia</option>
                 <option value="2761369">Vienna, Austria</option>
-
             </select>
             <button type="submit">start exploring</button>
         </form>
     </header>
     
     <main role="main" class="main hidden">
-            <div class="wiki"><h2>wiki</h2>
-                <div id="wikiResults"></div>
+        
+            <div class="wiki">
+                <div id="wikiResults"><h2>fast facts</h2></div>
             </div>
 
+            <div class="weather">
+                <div id="weatherResults"><h2></h2></div>
+            </div>  
         <section id="js-results" class="results">
-                <div class="weather"><h2>weather</h2>
-                    <div id="weatherResults">
-                            <!--<div id="openweathermap-widget-12">
-                            <script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 12,cityid: '2643743',appid: 'c894bfba04e757cc13b20cad7b39e4c6',units: 'imperial',containerid: 'openweathermap-widget-12',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
-                            </div>--></div></div>
-                            
-                <div class="news"><h2>news</h2>
-                    <div id="newsResults"></div>
-                </div>
-                <div class="youtube"><h2>youtube</h2>
-                    <div id="youtubeResults"></div>
-                </div>
+            <div class="news"><h2>trending headlines</h2>
+                <div id="newsResults"></div>
+            </div>
+
+            <div class="youtube"><h2>youtube</h2>
+                <div id="youtubeResults"></div>
+            </div>
         </section>
 
         <section id="js-error-message" class="error-message"></section>
         <footer role="contentinfo" id="footer" class="footer">
-            <button type="submit" class="restart"><!--<a href="#header">explore another city</a>-->explore another city</button>
+            <button type="submit" class="restart">explore another city</button>
         </footer>
 
     </main>
