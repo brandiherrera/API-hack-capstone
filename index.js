@@ -13,12 +13,9 @@ function formatQueryParams(params) {
 
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
-    /*$('#js-results').empty();
-    console.log("empty working");*/
     let kelvin = responseJson.main.temp 
     let fahrenheit = (kelvin * (9/5)) - 459.67
     let cityName = $('option:selected').text();
-    /*$('#weatherResults').empty();*/
     $('#weatherResults').append(
         `<div class="weather-container">
         <p>Weather for ${cityName}</p>
@@ -28,10 +25,6 @@ function displayWeatherResults(responseJson) {
         </div>
         `
     );
-    /*
-    $('#openweathermap-widget-12').append(
-        `<script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 12,cityid: ${cityId},appid: 'c894bfba04e757cc13b20cad7b39e4c6',units: 'imperial',containerid: 'openweathermap-widget-12',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>`
-    );*/
 }
 
 function getWeather(cityId) {
@@ -66,6 +59,11 @@ function displayNewsResults(responseJson) {
     /*$('#newsResults').empty();*/
     $('#newsResults').append(
         `
+        <section id="newsArticle" class="articles">
+        <img src="${responseJson.articles[i].urlToImage}" />
+        <h3>${articleTitle}</h3>
+        <p>${responseJson.articles[i].description}</p>
+        <button class="open">read more</button>
         <div class="popup-overlay">
             <div class="popup-content">
                 <h>${articleTitle}</h2>
@@ -73,11 +71,7 @@ function displayNewsResults(responseJson) {
                 <button class="close">close</button> 
             </div>
         </div>
-            <button class="open">read more</button>
-        <section id="newsArticle" class="articles">
-        <img src="${responseJson.articles[i].urlToImage}" />
-        <h3>${articleTitle}</h3>
-        <p>${responseJson.articles[i].description}</p>
+            
         </section>
         <br>
         
@@ -160,9 +154,9 @@ function displayYoutubeResults(responseJson) {
     for (let i=0; i<10; i++) {
     let video = responseJson.items[i];
     $('#youtubeResults').append(
-        `<section role="video" id="youtubeResults" class="youtubeResults"><h3>${responseJson.items[i].snippet.title}</h3>
-        <p>${responseJson.items[i].snippet.description}</p>
+        `<section id="youtubeVideos" class="videos"><h3>${responseJson.items[i].snippet.title}</h3>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
+        <p>${responseJson.items[i].snippet.description}</p>
         </section>`
     )};
 }
@@ -175,7 +169,7 @@ function getYoutube(cityName) {
         fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '6',
+        maxResults: '3',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -219,8 +213,6 @@ function startSearch() {
         getCityResults(cityId);
         console.log("getCityResults working");
         getMoreCityResults(cityName);
-        
-        
     });
 }
 

@@ -23,7 +23,9 @@ button {
 main {
     padding-top: 30px;
 }
-
+ul li {
+    list-style-type: none;
+}
 .results {
     display: flex;
     flex-direction: row;
@@ -49,14 +51,21 @@ main {
     float: left;
     padding-right: 3%;
 }
-#newsResults {
+.youtube .videoThumbnail {
+    width: 40%;
+    position: relative;
+    float: left;
+    padding-right: 3%;
+}
+#newsResults, #youtubeResults {
     height: 60%;
     overflow-y: scroll;
 }
-#newsArticle {
+#newsArticle, #youtubeVideos {
     padding: 3%;
+    height: 25%;
 }
-#newsArticle:hover {
+#newsArticle:hover, #youtubeVideos:hover {
     background-color: whitesmoke;
 }
 .youtube img {
@@ -71,26 +80,45 @@ main {
 }
 .weather-container {
     background-color: rgb(179, 230, 236);
-    border-radius: 10px;
-    box-shadow: black 5px;
-    padding: 3%;
-    width: 100%;
+    border-radius: 20px;
+    padding: 1%;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
-    box-shadow: 5px 10px grey;
-    margin-bottom: 3%;
+    /*box-shadow: 5px 10px grey;*/
+    margin-bottom: 2%;
 }
 .weather-container:hover {
-    background-color: blue;
+    background-color: rgb(108, 108, 233);
+}
+.news div {
+    border-right: #ffffff solid, 1px;
 }
 
+button {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.5% 2%;
+    border-radius: 30px;
+    margin: .20rem;
+    font-size: 1rem;
+    color: #666666;
+    background: #ffffff;
+    border: 1px solid #666666;
+  }
+  
+  button:hover {
+    border: 1px solid #666666;
+    background: #666666;
+    color: #ffffff;
+  }
 
-/*USE BELOW FOR SEPARATING SECTIONS
-.weather, .news, .youtube div {
-    border:white solid 5px;
+
+/*USE BELOW FOR SEPARATING SECTIONS*/
+.news div {
+    border-right:white solid 1px;
 }
-*/
-
-
 
 
 .popup-overlay {
