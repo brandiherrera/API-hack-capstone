@@ -56,35 +56,32 @@ function displayNewsResults(responseJson) {
     
     for (let i=0; i<6; i++) {
     let articleTitle = responseJson.articles[i].title;
-    /*$('#newsResults').empty();*/
+
     $('#newsResults').append(
         `
-        <section id="newsArticle" class="articles">
-        <img src="${responseJson.articles[i].urlToImage}" />
-        <h3>${articleTitle}</h3>
-        <p>${responseJson.articles[i].description}</p>
-        <button class="open">read more</button>
-        <div class="popup-overlay">
-            <div class="popup-content">
-                <h>${articleTitle}</h2>
-                <p>${responseJson.articles[i].content}</p>
-                <button class="close">close</button> 
+        <button class="accordion">${articleTitle}</button>
+            <div class="panel">
+                <img src="${responseJson.articles[i].urlToImage}" />
+                <p>${responseJson.articles[i].description}</p>
+                <button class="open">read more</button>
             </div>
-        </div>
-            
-        </section>
-        <br>
-        
         `
-        )};
-    $("#newsArticle").on("click", function() {
-        $(".popup-overlay, .popup-content").addClass("active");
-    });
-    $(".close, .popup-overlay").on("click", function() {
-        $(".popup-overlay, .popup-content").removeClass("active");
-    });
+    )};
     console.log("displayNewsResults working");
+    $('.accordion').on('click', function() {
+        this.classList.toggle("active");
+        console.log("accordion working");
+        let panel = this.nextElementSibling;
+        
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
 }
+
+
 /*<p>By ${responseJson.articles[i].author}, ${responseJson.articles[i].source.name}</p>*/
 
 
@@ -157,6 +154,7 @@ function displayYoutubeResults(responseJson) {
         `<section id="youtubeVideos" class="videos"><h3>${responseJson.items[i].snippet.title}</h3>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <p>${responseJson.items[i].snippet.description}</p>
+        <button class="open">watch video</button>
         </section>`
     )};
 }
