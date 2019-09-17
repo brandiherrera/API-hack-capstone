@@ -59,18 +59,18 @@ function displayNewsResults(responseJson) {
 
     $('#newsResults').append(
         `
-        <button class="accordion">${articleTitle}</button>
+        <div class="accordion">${articleTitle}</div>
             <div class="panel">
                 <img src="${responseJson.articles[i].urlToImage}" />
                 <p>${responseJson.articles[i].description}</p>
-                <button class="open">read more</button>
+                <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">read more</button></a>
             </div>
         `
     )};
     console.log("displayNewsResults working");
     $('.accordion').on('click', function() {
         this.classList.toggle("active");
-        console.log("accordion working");
+    /*console.log("accordion working");*/
         let panel = this.nextElementSibling;
         
         if (panel.style.display === "block") {
@@ -78,7 +78,11 @@ function displayNewsResults(responseJson) {
           } else {
             panel.style.display = "block";
           }
+    console.log("accordion click working");
         });
+    /*$('.open').on('click', function() {
+
+    })*/
 }
 
 
@@ -167,7 +171,7 @@ function getYoutube(cityName) {
         fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '3',
+        maxResults: '1',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -182,7 +186,7 @@ function getYoutube(cityName) {
         })
         .then(responseJson => displayYoutubeResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again.`);
+            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getYoutube working");
 }
@@ -196,7 +200,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }

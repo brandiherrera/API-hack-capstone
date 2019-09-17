@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" 
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" 
     crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e5db14ff37.js" rel="stylesheet"></script>
 </head>
 
 <body>
@@ -26,9 +27,25 @@
         <h1>enter your next travel destination</h1>
         <form class="js-form" id="form" role="form">
             <select name="js-city-search" id="js-city-search">
-                <option value="4726311" name="city-name">San Diego, US</option>
-                <option value="2172517">Canberra, Australia</option>
-                <option value="2761369">Vienna, Austria</option>
+                <optgroup label="Africa">
+                        <option	value="3183875">	Albania	,		Tirana	</option>
+                        <option	value="3183875">	cAlbania	,		Tirana	</option>
+                </optgroup>
+                <optgroup label="Asia">
+
+                </optgroup>
+                <optgroup label="Australia/Oceania">
+                    <option value="2172517">Canberra, Australia</option>
+                </optgroup>
+                <optgroup label="Europe">
+                    <option value="2761369">Vienna, Austria</option>
+                </optgroup>
+                <optgroup label="North America">
+                    <option value="4726311" name="city-name">San Diego, US</option>
+                </optgroup>
+                <optgroup label="South America">
+
+                </optgroup>
             </select>
             <button type="submit">start exploring</button>
         </form>
