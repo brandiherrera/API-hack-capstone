@@ -17,12 +17,12 @@ function displayWeatherResults(responseJson) {
     let fahrenheit = (kelvin * (9/5)) - 459.67
     let cityName = $('option:selected').text();
     $('#weatherResults').append(
-        `<div class="weather-container">
+        `<span><div class="weather-container">
         <p>Weather for ${cityName}</p>
         <img src="http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@2x.png" />
         <p>${fahrenheit.toFixed(0)}°F</p>
         <p>Wind: ${responseJson.wind.speed} m/h ${responseJson.weather[0].description}</p>
-        </div>
+        </div></span>
         `
     );
 }
@@ -70,7 +70,6 @@ function displayNewsResults(responseJson) {
     console.log("displayNewsResults working");
     $('.accordion').on('click', function() {
         this.classList.toggle("active");
-    /*console.log("accordion working");*/
         let panel = this.nextElementSibling;
         
         if (panel.style.display === "block") {
@@ -80,9 +79,6 @@ function displayNewsResults(responseJson) {
           }
     console.log("accordion click working");
         });
-    /*$('.open').on('click', function() {
-
-    })*/
 }
 
 
@@ -155,10 +151,10 @@ function displayYoutubeResults(responseJson) {
     for (let i=0; i<10; i++) {
     let video = responseJson.items[i];
     $('#youtubeResults').append(
-        `<section id="youtubeVideos" class="videos"><h3>${responseJson.items[i].snippet.title}</h3>
-        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
+        `<section id="youtubeVideos"><h3>${responseJson.items[i].snippet.title}</h3>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <p>${responseJson.items[i].snippet.description}</p>
-        <button class="open">watch video</button>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button>
         </section>`
     )};
 }
@@ -171,7 +167,7 @@ function getYoutube(cityName) {
         fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '1',
+        maxResults: '4',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -217,8 +213,6 @@ function startSearch() {
         getMoreCityResults(cityName);
     });
 }
-
-
 
 $('.restart').on('click', function(event) {
     event.preventDefault();
