@@ -26,7 +26,30 @@ function displayWeatherResults(responseJson) {
         `
     );
 }
-
+function getWeather(cityName) {
+    console.log(cityName);
+    const params = {
+        q: cityName.trim(),
+        APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
+    };
+    const queryString = formatQueryParams(params);
+    const url = weatherUrl + '?' + queryString;
+    console.log(url);
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayWeatherResults(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong, please try again.`);
+        });
+        console.log("getWeather working");
+}
+/*
+q={city name},{country code}
 function getWeather(cityId) {
     const params = {
         id: cityId,
@@ -48,7 +71,7 @@ function getWeather(cityId) {
         });
         console.log("getWeather working");
 }
-
+*/
 
 
 function displayNewsResults(responseJson) {
@@ -178,7 +201,7 @@ function getYoutube(cityName) {
         fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '3',
+        maxResults: '1',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -198,9 +221,9 @@ function getYoutube(cityName) {
         console.log("getYoutube working");
 }
 
-function getCityResults(cityId) {
+function getCityResults(cityName) {
     console.log("getCityResults working")
-    getWeather(cityId);
+    getWeather(cityName);
 }
 
 function getMoreCityResults(cityName) {
@@ -219,7 +242,7 @@ function startSearch() {
         const cityName = $('option:selected').text();
         console.log(cityId);
         console.log(cityName);
-        getCityResults(cityId);
+        getCityResults(cityName);
         console.log("getCityResults working");
         getMoreCityResults(cityName);
     });
