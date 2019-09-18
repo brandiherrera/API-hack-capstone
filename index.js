@@ -72,7 +72,7 @@ function getWeather(cityName) {
         })
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
+            $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getWeather working");
 }
@@ -169,7 +169,7 @@ function getNews(cityName) {
         })
         .then(responseJson => displayNewsResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
+            $('#js-error-message-news').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getNews working");
 }
@@ -203,7 +203,7 @@ function getWiki(cityName) {
         })
         .then(responseJson => displayWikiResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
+            $('#js-error-message-wiki').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getWiki working");
 }
@@ -244,7 +244,7 @@ function getYoutube(cityName) {
         })
         .then(responseJson => displayYoutubeResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
+            $('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getYoutube working");
 }
@@ -258,7 +258,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }
