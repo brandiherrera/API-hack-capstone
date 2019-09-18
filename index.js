@@ -167,7 +167,7 @@ function getYoutube(cityName) {
         fields: 'items',
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '4',
+        maxResults: '3',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -196,7 +196,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }
