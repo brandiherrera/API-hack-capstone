@@ -62,7 +62,7 @@ function displayNewsResults(responseJson) {
         <div class="accordion">${articleTitle}</div>
             <div class="panel">
                 <img src="${responseJson.articles[i].urlToImage}" />
-                <p>${responseJson.articles[i].description}</p>
+                <p class="article-content">${responseJson.articles[i].content}</p>
                 <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">read more</button></a>
             </div>
         `
@@ -81,6 +81,17 @@ function displayNewsResults(responseJson) {
         });
 }
 
+$('.accordion-landing').on('click', function() {
+    this.classList.toggle("active");
+    let panel = this.nextElementSibling;
+    
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+console.log("accordion click working");
+    });
 
 /*<p>By ${responseJson.articles[i].author}, ${responseJson.articles[i].source.name}</p>*/
 
@@ -118,7 +129,7 @@ function displayWikiResults(responseJson) {
     let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
     let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
     $('#wikiResults').append(
-        `<p>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</p>
+        `<h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
         <p>${responseJson.query.pages[wikiPagesId].extract}</p>
         <img id="city-image" src="${wikiPic}" />
         `
@@ -196,7 +207,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }

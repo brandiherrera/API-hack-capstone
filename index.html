@@ -15,21 +15,12 @@
 
 <body>
     <header role="banner" id="header">
-        <div class="landing-page-info">
-            <p>explore curated content to help plan your travels 
-                <ul>
-                    <li>a quick history</li>
-                    <li>current weather</li>
-                    <li>travel-based videos</li>
-                    <li>and trending news</li>
-                </ul>
-        </div>
         <h1>enter your next travel destination</h1>
         <form class="js-form" id="form" role="form">
             <select name="js-city-search" id="js-city-search">
                 <optgroup label="Africa">
-                        <option	value="3183875">	Albania	,		Tirana	</option>
-                        <option	value="3183875">	cAlbania	,		Tirana	</option>
+                    <option	value="3183875">	Albania	,		Tirana	</option>
+                    
                 </optgroup>
                 <optgroup label="Asia">
 
@@ -49,24 +40,46 @@
             </select>
             <button type="submit">start exploring</button>
         </form>
+        <div class="landing-page-info">
+            <h2>What can we help you explore?</h2>
+                <div class="accordion-landing">A quick history</div>
+                    <div class="panel-landing">
+                        <p>A brief history via Wikipedia.</p>
+                    </div>
+                <div class="accordion-landing">Current weather</div>
+                    <div class="panel-landing">
+                        <p>Current weather via OpenWeatherMap.</p>
+                    </div>
+                <div class="accordion-landing">Travel-based videos</div>
+                    <div class="panel-landing">
+                        <p>Travel-based videos directly from YouTube.</p>
+                    </div>
+                <div class="accordion-landing">Current news</div>
+                    <div class="panel-landing">
+                        <p>Trending headlines of most up-to-date news.</p>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        
     </header>
     
     <main role="main" class="main hidden">
         
             <div class="wiki">
-                <div id="wikiResults"><h2>fast facts</h2></div>
+                <div id="wikiResults"><h2>Fast Facts</h2></div>
             </div>
         <!--<section id="js-results" class="results">-->
-            <div class="news"><h2>trending headlines</h2>
+            <div class="news"><h2>Trending Headlines</h2>
                 <div id="newsResults"></div>
             </div>
 
-            <div class="youtube"><h2>youtube</h2>
+            <div class="youtube"><h2>Videos</h2>
                 <div id="youtubeResults"></div>
             </div>
-            <div class="weather"><h2>weather</h2>
+            <div class="weather"><h2>Weather</h2>
                 <div id="weatherResults"></div>
-                <div id="socialMedia">
+               
                     
                 </div>
             </div>  
