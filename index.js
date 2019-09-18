@@ -34,12 +34,11 @@ function displayWeatherResults(responseJson) {
 
     $('#weatherResults').append(
         `
-        <h4>Weather for ${rawDate}</h4>
-        <span><div class="weather-container">
-        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
-        <p>${fahrenheit.toFixed(0)}°F</p>
-        <p>Wind: ${wind} m/h ${description}</p>
-        </div></span>
+        <div id="weather-container"><h4>${rawDate}</h4>
+        <span><img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
+        <p>${fahrenheit.toFixed(0)}°F</p></span>
+        <p>${description}</p>
+        <p>Wind: ${wind} m/h</p></div>
         `
     )};
 }
@@ -258,7 +257,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }

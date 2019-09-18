@@ -19,16 +19,10 @@
         <form class="js-form" id="form" role="form">
             <select name="js-city-search" id="js-city-search">
                 <optgroup label="Africa">
-                    <option>	Alexandria , Egypt	</option>
-                    <option>	Antananarivo , Madagascar	</option>
                     <option>	Cairo , Egypt	</option>
                     <option>	Cape Town , South Africa	</option>
-                    <option>	Dakar , Senegal	</option>
                     <option>	Fes , Morocco	</option>
                     <option>	Johannesburg , South Africa	</option>
-                    <option>	Kairouan , Tunisia	</option>
-                    <option>	Livingstone , Zambia	</option>
-                    <option>	Maputo , Mozambique	</option>
                     <option>	Marrakesh , Morocco	</option>
                     <option>	Nairobi , Kenya	</option>
                     <option>	Zanzibar , Tanzania	</option>
@@ -55,15 +49,12 @@
                     <option>	Jakarta , Indonesia	</option>
                     <option>	Jeddah , Saudi Arabia	</option>
                     <option>	Jerusalem , Israel	</option>
-                    <option>	Kabul , Afghanistan	</option>
                     <option>	Kathmandu , Nepal	</option>
                     <option>	Kiev , Ukraine	</option>
                     <option>	Kuala Lumpur , Malaysia	</option>
                     <option>	Kyoto , Japan	</option>
-                    <option>	Luang Prabang , Laos	</option>
                     <option>	Macau , China	</option>
                     <option>	Manila , Philippines	</option>
-                    <option>	Mecca , Saudi Arabia	</option>
                     <option>	Moscow , Russia	</option>
                     <option>	Mumbai , India	</option>
                     <option>	Muscat , Oman	</option>
@@ -220,7 +211,7 @@
     </header>
     
     <main role="main" class="main hidden">
-        
+        <section id="js-features" class="features">
             <div class="wiki">
                 <div id="wikiResults"><h2>Fast Facts</h2></div>
                 <div id="js-error-message-wiki" class="error-message"></div>
@@ -230,21 +221,23 @@
                 <div id="newsResults"></div>
                 <div id="js-error-message-news" class="error-message"></div>
             </div>
-
-            <div class="youtube"><h2>Videos</h2>
-                <div id="youtubeResults"></div>
-                <div id="js-error-message-youtube" class="error-message"></div>
-            </div>
             <div class="weather"><h2>Weather</h2>
                 <div id="weatherResults"></div>
                 <div id="js-error-message-weather" class="error-message"></div>
             </div>
+            <div class="youtube"><h2>Videos</h2>
+                <div id="youtubeResults"></div>
+                <div id="js-error-message-youtube" class="error-message"></div>
+            </div>
+
             
         <!--</section>-->
-
+        </section>
+        <section class="interactive">
+                <button type="submit" class="restart">Explore another city</button>
+                <button type="submit" class="suggestion">Have a city you'd like us to add?</button>
+        </section>
         <footer role="contentinfo" id="footer" class="footer">
-            <button type="submit" class="restart">Explore another city</button>
-            <button type="submit" class="suggestion">Have a city you'd like us to add?</button>
             <p>©2019 Brandi Herrera</p>
         </footer>
 
