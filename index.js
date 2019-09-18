@@ -1,6 +1,6 @@
 'use strict';
 
-const weatherUrl = "https://api.openweathermap.org/data/2.5/weather"
+const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast"
 const newsUrl = "https://newsapi.org/v2/everything"
 const youtubeUrl = "https://www.googleapis.com/youtube/v3/search"
 
@@ -11,11 +11,39 @@ function formatQueryParams(params) {
         return queryItems.join('&');
 }
 
+function getDay(responseJson) {
+for (let i=0; i<responseJson.length; i++) {
+    if (i===0 || i%8===0) {
+        return
+};
+};}
+
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
-    let kelvin = responseJson.main.temp 
+    for (let i=0; i<=41; i++) 
+        /*if (i===0 || i%8===0) {*/
+        if (responseJson.list[i].dt_txt.slice(11) === '12:00:00') {
+        console.log(i);
+    let cityName = $('option:selected').text().trim().replace(" , ", ", ");
+    let kelvin = responseJson.list[i].main.temp;
     let fahrenheit = (kelvin * (9/5)) - 459.67
-    let cityName = $('option:selected').text();
+    let weatherIcon = responseJson.list[i].weather[0].icon;
+    let wind = responseJson.list[i].wind.speed;
+    let description = responseJson.list[i].weather[0].description;
+    let rawDate = responseJson.list[i].dt_txt;
+
+    $('#weatherResults').append(
+        `
+        <h4>Weather for ${rawDate}</h4>
+        <span><div class="weather-container">
+        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
+        <p>${fahrenheit.toFixed(0)}°F</p>
+        <p>Wind: ${wind} m/h ${description}</p>
+        </div></span>
+        `
+    )};
+}
+    /*
     $('#weatherResults').append(
         `<span><div class="weather-container">
         <p>Weather for ${cityName}</p>
@@ -25,11 +53,11 @@ function displayWeatherResults(responseJson) {
         </div></span>
         `
     );
-}
+    */
 function getWeather(cityName) {
     console.log(cityName);
     const params = {
-        q: cityName.trim(),
+        q: cityName,
         APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
     };
     const queryString = formatQueryParams(params);
@@ -44,7 +72,7 @@ function getWeather(cityName) {
         })
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again.`);
+            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getWeather working");
 }
@@ -141,7 +169,7 @@ function getNews(cityName) {
         })
         .then(responseJson => displayNewsResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again.`);
+            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getNews working");
 }
@@ -175,7 +203,7 @@ function getWiki(cityName) {
         })
         .then(responseJson => displayWikiResults(responseJson))
         .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again.`);
+            $('#js-error-message').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getWiki working");
 }
@@ -238,9 +266,9 @@ function getMoreCityResults(cityName) {
 function startSearch() {
     $('form').submit(event => {
         event.preventDefault();
-        const cityId = $('#js-city-search').val();
-        const cityName = $('option:selected').text();
-        console.log(cityId);
+        /*const cityId = $('#js-city-search').val();*/
+        const cityName = $('option:selected').text().trim().replace(" , ", ", ");
+        /*console.log(cityId);*/
         console.log(cityName);
         getCityResults(cityName);
         console.log("getCityResults working");

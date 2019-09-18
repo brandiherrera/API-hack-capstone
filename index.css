@@ -142,6 +142,9 @@ ul li {
     text-align: center;
     padding: 4% 0;
 }
+#footer p {
+    text-align: left;
+}
 /*
 .news div {
     border-right: #ffffff solid, 1px;
