@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    
 }
 
 body {
@@ -8,7 +7,23 @@ body {
     padding: 10%;
     background: rgb(171, 201, 226);
 }
-
+.nav a {
+    text-decoration: none;
+    color: #4d4d4d;
+}
+.nav {
+    background: #d9d9d9;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: right;
+    padding: 1% 2%;
+}
+ul li {
+    display: inline;
+    padding-right: 3%
+}
 header {
     padding: 3%;
     text-align: left;
@@ -46,18 +61,18 @@ ul li {
     list-style-type: none;
 }
 
-.news {
+#news {
     width: 100%;
     padding: 5% 0;
 }
-.news img {
+#news img {
     width: 50%;
     position: relative;
     float: left;
     padding-right: 3%;
 }
 
-.wiki {
+#wiki {
     display: block;
     text-align: center;
     border: 10px, solid black;
@@ -65,14 +80,14 @@ ul li {
     background-color: #cccccc;
     border-radius: 5px;
 }
-.wiki img {
+#wiki img {
     width: 100%;
 }
 #wikiResults p {
     text-align: left;
 }
 
-.weather {
+#weather {
     width: 100%;
     /*background-color: #cccccc;*/
     border-radius: 5px;
@@ -90,7 +105,7 @@ ul li {
     background-color: rgb(108, 108, 233);
 }
 */
-.youtube {
+#youtube {
     width: 100%;
     height: 50%;
     padding: 3% 0%;
@@ -101,27 +116,36 @@ ul li {
 }
 #youtubeResults {
     padding: 2% 2%;
-    height: 400px;
+    /*height: 400px;*/
     overflow-y: scroll;
 }
 #video-container {
     display: inline-block;
     background-color: whitesmoke;
     border-radius: 5px;
-    width: 33%;
-    height: 400px;
+    width: 30%;
+    /*height: 400px;*/
     text-align: center;
     padding: 3%;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 2%;
 }
-.youtube img {
-    width: 80%;
+#video-container img {
+    width: 90%;
     /*padding-right: 3%;*/
     border-radius: 5px;
 }
-.youtube #youtubeVideos {
+#video-container h3 {
+    height: 40px;
+    padding: 0 2%;
+    overflow: hidden;
+}
+/*
+#youtube #youtubeVideos {
     padding: 0% 3%;
     text-align: center;
-}
+}*/
 /*
 #youtubeResults::after {
     border-bottom: 2px whitesmoke;
@@ -130,10 +154,11 @@ ul li {
 }
 */
 #youtubeResults {
-    display: inline-block;
+    text-align: center;
+    /*display: inline-block;*/
     /*flex-direction: column;*/
-    height: 500px;
-    overflow-y: scroll;
+    /*height: 500px;
+    overflow-y: scroll;*/
 }
 .interactive {
     text-align: center;
@@ -265,3 +290,16 @@ button {
     background-color: #e6e6e6;
     overflow: hidden;
   }
+/*
+  @media screen and (min-width: 736px) {
+      .fas fa-bars {
+          display: none;
+      }
+  }
+
+  @media screen and (max-width: 736px) {
+    .navigation {
+        display: none;
+    }
+}
+*/

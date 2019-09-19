@@ -11,13 +11,6 @@ function formatQueryParams(params) {
         return queryItems.join('&');
 }
 
-function getDay(responseJson) {
-for (let i=0; i<responseJson.length; i++) {
-    if (i===0 || i%8===0) {
-        return
-};
-};}
-
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
     for (let i=0; i<=41; i++) 
@@ -216,13 +209,12 @@ function displayYoutubeResults(responseJson) {
         <div id="video-container">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <h3>${responseJson.items[i].snippet.title}</h3>
-        <p>${responseJson.items[i].snippet.description}</p>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button>
         </div>
         `
     )};
 }
-
+/*        <p>${responseJson.items[i].snippet.description}</p> */
 function getYoutube(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
@@ -231,7 +223,7 @@ function getYoutube(cityName) {
         /*fields: 'items',*/
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '4',
+        maxResults: '6',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -260,9 +252,10 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
+    $('.nav').removeClass('hidden');
 }
 
 function startSearch() {

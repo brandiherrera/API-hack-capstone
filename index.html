@@ -14,6 +14,15 @@
 </head>
 
 <body>
+    <nav role="navigation" class="nav hidden">
+        <ul>
+            <li><a href="#wiki">Wiki</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#weather">Weather</a></li>
+            <li><a href="#youtube">Videos</a></li>
+        </ul>
+        <div class="fas fa-bars"></div>
+    </nav>
     <header role="banner" id="header">
         <h1>enter your next travel destination</h1>
         <form class="js-form" id="form" role="form">
@@ -76,8 +85,6 @@
                     <option> Canberra, Australia</option>
                     <option> Christchurch , New Zealand  </option>
                     <option> Hobart , Australia  </option>
-                    <option> Madang , Papua New Guinea	</option>
-                    <option> Male , Maldives	</option>
                     <option> Melbourne , Australia  </option>
                     <option> Perth , Australia  </option>
                     <option> Suva , Fiji	</option>
@@ -212,20 +219,20 @@
     
     <main role="main" class="main hidden">
         <section id="js-features" class="features">
-            <div class="wiki">
+            <div id="wiki">
                 <div id="wikiResults"><h2>Fast Facts</h2></div>
                 <div id="js-error-message-wiki" class="error-message"></div>
             </div>
         <!--<section id="js-results" class="results">-->
-            <div class="news"><h2>Trending Headlines</h2>
+            <div id="news"><h2>Trending Headlines</h2>
                 <div id="newsResults"></div>
                 <div id="js-error-message-news" class="error-message"></div>
             </div>
-            <div class="weather"><h2>5 Day Forecast</h2>
+            <div id="weather"><h2>5 Day Forecast</h2>
                 <div id="weatherResults"></div>
                 <div id="js-error-message-weather" class="error-message"></div>
             </div>
-            <div class="youtube"><h2>Videos</h2>
+            <div id="youtube"><h2>Videos</h2>
                 <div id="youtubeResults"></div>
                 <div id="js-error-message-youtube" class="error-message"></div>
             </div>
