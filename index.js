@@ -14,7 +14,6 @@ function formatQueryParams(params) {
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
     for (let i=0; i<=41; i++) 
-        /*if (i===0 || i%8===0) {*/
         if (responseJson.list[i].dt_txt.slice(11) === '12:00:00') {
         console.log(i);
     let cityName = $('option:selected').text().trim().replace(" , ", ", ");
@@ -27,25 +26,16 @@ function displayWeatherResults(responseJson) {
 
     $('#weatherResults').append(
         `
-        <div id="weather-container" role="text"><h4>${rawDate}</h4>
-        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
+        <div id="weather-container" role="text">
+        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
+        <h4>${rawDate}</h4>
         <p>${fahrenheit.toFixed(0)}°F</p>
         <p>${description}</p>
-        <p>Wind: ${wind} m/h</p></div>
+        <p class="wind">Wind: ${wind} m/h</p></div>
         `
     )};
 }
-    /*
-    $('#weatherResults').append(
-        `<span><div class="weather-container">
-        <p>Weather for ${cityName}</p>
-        <img src="http://openweathermap.org/img/wn/${responseJson.weather[0].icon}@2x.png" />
-        <p>${fahrenheit.toFixed(0)}°F</p>
-        <p>Wind: ${responseJson.wind.speed} m/h ${responseJson.weather[0].description}</p>
-        </div></span>
-        `
-    );
-    */
+
 function getWeather(cityName) {
     console.log(cityName);
     const params = {
@@ -68,30 +58,6 @@ function getWeather(cityName) {
         });
         console.log("getWeather working");
 }
-/*
-q={city name},{country code}
-function getWeather(cityId) {
-    const params = {
-        id: cityId,
-        APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
-    };
-    const queryString = formatQueryParams(params);
-    const url = weatherUrl + '?' + queryString;
-    console.log(url);
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error(response.statusText);
-        })
-        .then(responseJson => displayWeatherResults(responseJson))
-        .catch(err => {
-            $('#js-error-message').text(`Something went wrong, please try again.`);
-        });
-        console.log("getWeather working");
-}
-*/
 
 
 function displayNewsResults(responseJson) {
@@ -136,10 +102,6 @@ $('.accordion-landing').on('click', function() {
 console.log("accordion click working");
     });
 
-/*<p>By ${responseJson.articles[i].author}, ${responseJson.articles[i].source.name}</p>*/
-
-
-
 function getNews(cityName) {
     const strCityName = cityName;
     console.log(strCityName);
@@ -174,6 +136,7 @@ function displayWikiResults(responseJson) {
     $('#wikiResults').append(
         `<h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
         <p>${responseJson.query.pages[wikiPagesId].extract}</p>
+        
         <img id="city-image" src="${wikiPic}" alt="" />
         `
     )
@@ -209,18 +172,17 @@ function displayYoutubeResults(responseJson) {
         <div id="video-container" role="text">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <h3>${responseJson.items[i].snippet.title}</h3>
-        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button></a>
         </div>
         `
     )};
 }
-/*        <p>${responseJson.items[i].snippet.description}</p> */
+
 function getYoutube(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     const params = {
         part: 'snippet',
-        /*fields: 'items',*/
         type: 'video',
         q: 'travel&'+cityNameOnly,
         maxResults: '6',
@@ -252,7 +214,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
     $('.nav').removeClass('hidden');
@@ -261,9 +223,7 @@ function getMoreCityResults(cityName) {
 function startSearch() {
     $('form').submit(event => {
         event.preventDefault();
-        /*const cityId = $('#js-city-search').val();*/
         const cityName = $('option:selected').text().trim().replace(" , ", ", ");
-        /*console.log(cityId);*/
         console.log(cityName);
         getCityResults(cityName);
         console.log("getCityResults working");
