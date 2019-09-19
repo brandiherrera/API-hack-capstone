@@ -35,8 +35,8 @@ function displayWeatherResults(responseJson) {
     $('#weatherResults').append(
         `
         <div id="weather-container"><h4>${rawDate}</h4>
-        <span><img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
-        <p>${fahrenheit.toFixed(0)}°F</p></span>
+        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
+        <p>${fahrenheit.toFixed(0)}°F</p>
         <p>${description}</p>
         <p>Wind: ${wind} m/h</p></div>
         `
@@ -212,11 +212,14 @@ function displayYoutubeResults(responseJson) {
     for (let i=0; i<10; i++) {
     let video = responseJson.items[i];
     $('#youtubeResults').append(
-        `<section id="youtubeVideos"><h3>${responseJson.items[i].snippet.title}</h3>
+        `
+        <div id="video-container">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
+        <h3>${responseJson.items[i].snippet.title}</h3>
         <p>${responseJson.items[i].snippet.description}</p>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button>
-        </section>`
+        </div>
+        `
     )};
 }
 
@@ -225,10 +228,10 @@ function getYoutube(cityName) {
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     const params = {
         part: 'snippet',
-        fields: 'items',
+        /*fields: 'items',*/
         type: 'video',
         q: 'travel&'+cityNameOnly,
-        maxResults: '1',
+        maxResults: '4',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -257,7 +260,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }
