@@ -5,6 +5,7 @@
 body {
     font-family: sans-serif;
     padding: 10%;
+    background-image: url("images/desert.jpg");
     background: rgb(171, 201, 226);
 }
 .nav a {
@@ -147,6 +148,8 @@ ul li {
 #footer {
     text-align: left;
     padding: 4% 0;
+    position: fixed;
+    bottom: 0;
 }
 
 button {
