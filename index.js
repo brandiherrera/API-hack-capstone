@@ -260,7 +260,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
 }
