@@ -15,19 +15,19 @@
 
 <body>
     <nav role="navigation" class="nav hidden">
-        <ul>
+        <ul role="list">
             <li><a href="#wiki">Wiki</a></li>
             <li><a href="#news">News</a></li>
             <li><a href="#weather">Weather</a></li>
             <li><a href="#youtube">Videos</a></li>
         </ul>
-        <div class="fas fa-bars"></div>
+        <div class="fas fa-bars" role="menu"></div>
     </nav>
     <header role="banner" id="header">
-        <h1>enter your next travel destination</h1>
+        <h1>Enter your next travel destination</h1>
         <form class="js-form" id="form" role="form">
-            <select name="js-city-search" id="js-city-search">
-                <optgroup label="Africa">
+            <select name="js-city-search" id="js-city-search" role="listbox">
+                <optgroup role="group" label="Africa">
                     <option>	Cairo , Egypt	</option>
                     <option>	Cape Town , South Africa	</option>
                     <option>	Fes , Morocco	</option>
@@ -36,7 +36,7 @@
                     <option>	Nairobi , Kenya	</option>
                     <option>	Zanzibar , Tanzania	</option>
                 </optgroup>
-                <optgroup label="Asia">
+                <optgroup role="group" label="Asia">
                     <option>	Abu Dhabi , UAE	</option>
                     <option>	Ankara , Turkey	</option>
                     <option>	Baku , Azerbaijan	</option>
@@ -79,7 +79,7 @@
                     <option>	Tel Aviv , Israel	</option>
                     <option>	Tokyo , Japan	</option>
                 </optgroup>
-                <optgroup label="Australia/Oceania">
+                <optgroup role="group" label="Australia/Oceania">
                     <option> Apia , Samoa	</option>
                     <option> Auckland , New Zealand  </option>
                     <option> Canberra, Australia</option>
@@ -91,7 +91,7 @@
                     <option> Sydney , Australia  </option>
                     <option> Wellington , New Zealand  </option>
                 </optgroup>
-                <optgroup label="Central America/Caribbean Islands">
+                <optgroup role="group" label="Central America/Caribbean Islands">
                     <option>	Belize City , Belize	</option>
                     <option>	Bridgetown , Barbados	</option>
                     <option>	Havana , Cuba	</option>
@@ -103,7 +103,7 @@
                     <option>	San Salvador , El Salvador	</option>
                     <option>	Santo Domingo , Dominican Republic	</option>
                 </optgroup>
-                <optgroup label="Europe">
+                <optgroup role="group" label="Europe">
                     <option>	Amsterdam , Netherlands	</option>
                     <option>	Athens , Greece	</option>
                     <option>	Barcelona , Spain	</option>
@@ -150,7 +150,7 @@
                     <option>	Zagreb , Croatia	</option>
                     <option>	Zurich , Switzerland	</option>
                 </optgroup>
-                <optgroup label="North America">
+                <optgroup role="group" label="North America">
                     <option>	Anchorage , US	</option>
                     <option>	Atlanta , US	</option>
                     <option>	Austin , US	</option>
@@ -174,7 +174,7 @@
                     <option>	Vancouver , Canada	</option>
                     <option>	Washington District of Columbia , US	</option>
                 </optgroup>
-                <optgroup label="South America">
+                <optgroup role="group" label="South America">
                     <option>	Arequipa , Peru	</option>
                     <option>	Bogota , Colombia	</option>
                     <option>	Brasilia , Brazil	</option>
@@ -191,10 +191,11 @@
                     <option>	Sucre La Paz , Bolivia	</option>
                 </optgroup>
             </select>
-            <button type="submit">start exploring</button>
+            <button type="submit">Explore</button>
         </form>
-        <div class="landing-page-info">
-            <h2>What can we help you explore?</h2>
+        <p role="text">Explore curated content such as a location overview, current news headlines, a five day forecast, and travel-based videos to set you on your next adventure!</p>
+        <!--<div class="landing-page-info">
+            <h2>Explore curated content such as a location overview, current news headlines, five day forecast, and travel-based videos to set you on your next adventure!</h2>
                 <div class="accordion-landing">A quick history</div>
                     <div class="panel-landing">
                         <p>A brief history via Wikipedia.</p>
@@ -211,34 +212,33 @@
                     <div class="panel-landing">
                         <p>Trending headlines of most up-to-date news.</p>
                     </div>
-                    </div>
-                </div>
+                    </div>-->
+                
         </div>
-        
     </header>
     
     <main role="main" class="main hidden">
-        <section id="js-features" class="features">
-            <div id="wiki">
+        <section id="js-features" class="features" role="region">
+            <div id="wiki" role="text">
                 <div id="wikiResults"><h2>Fast Facts</h2></div>
                 <div id="js-error-message-wiki" class="error-message"></div>
             </div>
         <!--<section id="js-results" class="results">-->
-            <div id="news"><h2>Trending Headlines</h2>
+            <div id="news" role="text"><h2>Trending Headlines</h2>
                 <div id="newsResults"></div>
                 <div id="js-error-message-news" class="error-message"></div>
             </div>
-            <div id="weather"><h2>5 Day Forecast</h2>
+            <div id="weather" role="text"><h2>5 Day Forecast</h2>
                 <div id="weatherResults"></div>
                 <div id="js-error-message-weather" class="error-message"></div>
             </div>
-            <div id="youtube"><h2>Videos</h2>
+            <div id="youtube" role="text"><h2>Videos</h2>
                 <div id="youtubeResults"></div>
                 <div id="js-error-message-youtube" class="error-message"></div>
             </div>
         <!--</section>-->
         </section>
-        <section class="interactive">
+        <section class="interactive" role="region">
                 <button type="submit" class="restart">Explore another city</button>
                 <button type="submit" class="suggestion">Have a city you'd like to add?</button>
         </section>

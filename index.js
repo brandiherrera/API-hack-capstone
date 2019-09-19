@@ -27,7 +27,7 @@ function displayWeatherResults(responseJson) {
 
     $('#weatherResults').append(
         `
-        <div id="weather-container"><h4>${rawDate}</h4>
+        <div id="weather-container" role="text"><h4>${rawDate}</h4>
         <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" />
         <p>${fahrenheit.toFixed(0)}°F</p>
         <p>${description}</p>
@@ -102,8 +102,8 @@ function displayNewsResults(responseJson) {
 
     $('#newsResults').append(
         `
-        <div class="accordion">${articleTitle}</div>
-            <div class="panel">
+        <div class="accordion" role="menu">${articleTitle}</div>
+            <div class="panel" role="menuitem">
                 <img src="${responseJson.articles[i].urlToImage}" />
                 <p class="article-content">${responseJson.articles[i].content}</p>
                 <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">read more</button></a>
@@ -174,7 +174,7 @@ function displayWikiResults(responseJson) {
     $('#wikiResults').append(
         `<h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
         <p>${responseJson.query.pages[wikiPagesId].extract}</p>
-        <img id="city-image" src="${wikiPic}" />
+        <img id="city-image" src="${wikiPic}" alt="" />
         `
     )
     console.log("getWikiResults working");
@@ -206,7 +206,7 @@ function displayYoutubeResults(responseJson) {
     let video = responseJson.items[i];
     $('#youtubeResults').append(
         `
-        <div id="video-container">
+        <div id="video-container" role="text">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <h3>${responseJson.items[i].snippet.title}</h3>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button>
@@ -252,7 +252,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('.main').removeClass('hidden');
     $('.nav').removeClass('hidden');

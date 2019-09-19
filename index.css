@@ -36,6 +36,14 @@ header {
 .landing-page-info > h2 {
     text-align: left;
 }
+
+header p {
+    padding: 10% 0 5% 0;
+}
+#js-city-search {
+    width: 50%;
+    /*height: 10%;*/
+}
 /*
 @media (max-width: 500px) {
     header {
