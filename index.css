@@ -34,6 +34,9 @@ p {
     text-align: center;
     padding: 0% 0%;
 }
+ul {
+    padding-right: 40px;
+}
 ul li {
     display: inline;
     padding-right: 3%
@@ -107,30 +110,30 @@ ul li {
     text-align: center;
 }
 #wiki-container {
-    display: inline-flex;
+    display: flex;
     background-color: white;
     border-radius: 5px;
     padding: 25px 50px 50px 50px;
-
 }
-#wiki-container > img {
-    width: 50%;
-    max-height: 450px;
+#city-image {
     float: right;
-    word-wrap: normal;
-    padding-left: 3%;
+    max-width: 60%;
+    max-height: 450px;
+    margin-left: 1%;
+    border-radius: 3px;
 }
 span > h3, span > p {
     text-align: left;
-    width: 90%;
+    width: 100%;
     color: #666666;
     vertical-align: middle;
     padding-left: 5%;
     padding-right: 5%;
-
+    margin-right: 0;
 }
 span > p {
     line-height: 150%;
+    
 }
 #weather {
     width: 100%;
@@ -159,7 +162,7 @@ span > p {
 }
 #video-container {
     display: inline-block;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 5px;
     width: 31%;
     text-align: center;
@@ -315,46 +318,56 @@ button {
   }*/
 /*larger than tablet*/
   @media screen and (min-width: 776px) {
-    .nav div {
+    /*.nav div {
         display: none;
-    }
+    }*/
     #news img {
         float: left;
     }
   }
 /*smaller than tablet*/
+  @media screen and (max-width: 450px) {
+    #city-image {
+        float: bottom;
+        box-align: bottom;
+    }
+  }
   @media screen and (max-width: 775px) {
-    .nav ul {
+    /*.nav ul {
         display: none;
+    }*/
+    header p {
+        padding: 2% 0 2% 0;
+        line-height: 130%;
+    }
+    #wiki-container {
+        display: inline-block;
+        background-color: white;
+        border-radius: 5px;
+        padding: 15px 3px 10px 3px;
     }
     #weather-container {
         display: block;
         background-color: #f2f2f2;
         border-radius: 5px;
-        width: 50%;
+        width: 80%;
         text-align: center;
         margin-right: auto;
         margin-left: auto;
         min-width: 120px;
     }
     #weather-container p {
-        line-height: 50%;
+        line-height: 10%;
     }
     #weather-container h4 {
         padding-top: 4%;
     }
-    #weather-container .wind {
-        padding-bottom: 4%;
+    #weather-container .description {
+        padding-bottom: 6%;
     }
     #weather-container .weather-icon {
         float: left;
         flex-wrap: wrap;
-    }
-    header {
-        padding: 3%;
-        text-align: center;
-        border: none;
-        width: 100%;
     }
     #youtubeResults {
         height: 1450px;
@@ -367,4 +380,23 @@ button {
         margin-left: 0%;
         margin-bottom: 2%;
     }
+
+}
+@media screen and (max-width: 1000px) {
+    header {
+        padding: 3%;
+        text-align: center;
+        border: none;
+        width: 100%;
+    }
+    #wiki-container {
+        padding: 15px 5px 10px 3px;
+    }
+    span > h3, span > p {
+        text-align: left;
+        width: 100%;
+        color: #666666;
+        vertical-align: middle;
+        padding-left: 5%;
+        padding-right: 5%;
 }

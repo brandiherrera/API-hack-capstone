@@ -30,12 +30,12 @@ function displayWeatherResults(responseJson) {
         <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
         <h4>${rawDate}</h4>
         <p>${fahrenheit.toFixed(0)}°F</p>
-        <p>${description}</p>
-        <p class="wind">Wind: ${wind} m/h</p></div>
+        <p class="description">${description}</p>
+        
         `
     )};
 }
-
+/*<p class="wind">Wind: ${wind} m/h</p></div>*/
 function getWeather(cityName) {
     console.log(cityName);
     const params = {
@@ -137,8 +137,9 @@ function displayWikiResults(responseJson) {
         `
         <div id="wiki-container" role="text">
         <span><h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
-        <p>${responseJson.query.pages[wikiPagesId].extract}</p></span>
-        <img id="city-image" src="${wikiPic}" alt="" />
+        <p class="extract"><img id="city-image" src="${wikiPic}" alt="" />${responseJson.query.pages[wikiPagesId].extract}</p></span>
+        
+        
         </div>
         `
     )
