@@ -72,7 +72,7 @@ function displayNewsResults(responseJson) {
             <div class="panel" role="menuitem">
                 <img src="${responseJson.articles[i].urlToImage}" />
                 <p class="article-content">${responseJson.articles[i].content}</p>
-                <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">read more</button></a>
+                <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">Read More</button></a>
             </div>
         `
     )};
@@ -134,10 +134,12 @@ function displayWikiResults(responseJson) {
     let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
     let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
     $('#wikiResults').append(
-        `<h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
-        <p>${responseJson.query.pages[wikiPagesId].extract}</p>
-        
+        `
+        <div id="wiki-container" role="text">
+        <span><h3>${responseJson.query.pages[wikiPagesId].title}: ${responseJson.query.pages[wikiPagesId].description}</h3>
+        <p>${responseJson.query.pages[wikiPagesId].extract}</p></span>
         <img id="city-image" src="${wikiPic}" alt="" />
+        </div>
         `
     )
     console.log("getWikiResults working");
@@ -172,7 +174,7 @@ function displayYoutubeResults(responseJson) {
         <div id="video-container" role="text">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <h3>${responseJson.items[i].snippet.title}</h3>
-        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">watch video</button></a>
+        <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">Watch Video</button></a>
         </div>
         `
     )};
@@ -230,6 +232,13 @@ function startSearch() {
         getMoreCityResults(cityName);
     });
 }
+function hamburgerClick() {
+    $('.hamburger').classList.toggle("show");
+}
+$('.hamburger').on('click', function(event) {
+    event.preventDefault();
+
+})
 
 $('.restart').on('click', function(event) {
     event.preventDefault();
@@ -237,7 +246,10 @@ $('.restart').on('click', function(event) {
     console.log("restartSearch working");
 });
 
+$('.footer').removeClass('hidden');
+
 $(function() {
     console.log("app working"); 
     startSearch();
+    $('.footer').removeClass('hidden');
 })
