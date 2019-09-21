@@ -72,6 +72,7 @@ function getWeather(cityName) {
         })
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
+            console.log(err.message);
             /*$('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);*/
         });
         console.log("getWeather working");
