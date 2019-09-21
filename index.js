@@ -13,9 +13,13 @@ function formatQueryParams(params) {
 
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
-    for (let i=0; i<=41; i++) 
+  /*$(function(event) {*/
+        for (let i=0; i<=41; i++) {
+        console.log("forLoop working");
         if (responseJson.list[i].dt_txt.slice(11) === '12:00:00') {
         console.log(i);
+        /*return i*/
+
     let cityName = $('option:selected').text().trim().replace(" , ", ", ");
     let kelvin = responseJson.list[i].main.temp;
     let fahrenheit = (kelvin * (9/5)) - 459.67
@@ -23,6 +27,13 @@ function displayWeatherResults(responseJson) {
     let wind = responseJson.list[i].wind.speed;
     let description = responseJson.list[i].weather[0].description;
     let rawDate = responseJson.list[i].dt_txt;
+/*
+    $(function() {
+        $(rawDate).shift();
+        console.log(rawDate);
+    }
+    $(rawDate).shift();
+    console.log($(rawDate).shift());*/
 
     $('#weatherResults').append(
         `
@@ -34,8 +45,12 @@ function displayWeatherResults(responseJson) {
         
         `
     )};
+    };
 }
-/*<p class="wind">Wind: ${wind} m/h</p></div>*/
+
+
+
+
 function getWeather(cityName) {
     console.log(cityName);
     const params = {
@@ -50,11 +65,14 @@ function getWeather(cityName) {
             if (response.ok) {
                 return response.json();
             }
+            if (response === 'city not found') {
+                return $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
+            }
             throw new Error(response.statusText);
         })
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
-            $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
+            /*$('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);*/
         });
         console.log("getWeather working");
 }
@@ -123,6 +141,7 @@ function getNews(cityName) {
         })
         .then(responseJson => displayNewsResults(responseJson))
         .catch(err => {
+            console.log(err.message);
             $('#js-error-message-news').text(`Something went wrong, please try again: ${err.message}`);
         });
         console.log("getNews working");
@@ -185,9 +204,9 @@ function getYoutube(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     const params = {
+        q: 'travel&'+cityNameOnly,
         part: 'snippet',
         type: 'video',
-        q: 'travel&'+cityNameOnly,
         maxResults: '6',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
@@ -203,7 +222,8 @@ function getYoutube(cityName) {
         })
         .then(responseJson => displayYoutubeResults(responseJson))
         .catch(err => {
-            $('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);
+            console.log(err.message);
+            /*$('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);*/
         });
         console.log("getYoutube working");
 }
@@ -219,8 +239,9 @@ function getMoreCityResults(cityName) {
     getWiki(cityName);
     getYoutube(cityName);
     $('#header').addClass('hidden');
-    $('.main').removeClass('hidden');
+    $('#js-features').removeClass('hidden');
     $('.nav').removeClass('hidden');
+    $('.interactive').removeClass('hidden');
 }
 
 function startSearch() {
@@ -233,13 +254,14 @@ function startSearch() {
         getMoreCityResults(cityName);
     });
 }
+/*
 function hamburgerClick() {
     $('.hamburger').classList.toggle("show");
 }
 $('.hamburger').on('click', function(event) {
     event.preventDefault();
 
-})
+})*/
 
 $('.restart').on('click', function(event) {
     event.preventDefault();
@@ -247,10 +269,10 @@ $('.restart').on('click', function(event) {
     console.log("restartSearch working");
 });
 
-$('.footer').removeClass('hidden');
+/*$('.footer').removeClass('hidden');*/
 
 $(function() {
     console.log("app working"); 
     startSearch();
-    $('.footer').removeClass('hidden');
+    /*$('.footer').removeClass('hidden');*/
 })

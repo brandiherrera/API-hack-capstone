@@ -4,20 +4,37 @@
 }
 
 body {
-    padding: 10%;
+    padding: 10% 10% 5% 10%;
     background: url("https://www.themandagies.com/wp-content/uploads/2018/07/Moraine-Lake-and-Lake-Louise-Sunrise-Banff-Alberta-4.jpg") fixed;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 header > h1, .nav, h2, h3 {
     font-family: 'Libre Baskerville', serif;
 }
 h1 {
-    font-size: 300%;
+    font-size: 200%;
 }
 h2 {
-    font-size: 250%;
+    font-size: 165%;
+    text-align: center;
 }
+h2 {
+    background-color: #333333;;
+    border-radius: 5px;
+    margin-top: 2%;
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+#youtube h2 {
+    width: 96%;
+}
+#weather h2 {
+    width: 80%;
+}
+
 p {
     font-family: 'Libre Franklin', sans-serif;
 }
@@ -74,9 +91,6 @@ header p {
     width: 50%;
 }
 
-h2 {
-    text-align: center;
-}
 button {
     background-color: slategray;
 }
@@ -87,6 +101,7 @@ button {
 
 main {
     padding-top: 30px;
+    min-height: 50vh;
 }
 h2, h3 {
     color: white;
@@ -108,6 +123,7 @@ ul li {
 
 #wiki {
     text-align: center;
+    padding: 5% 0;
 }
 #wiki-container {
     display: flex;
@@ -138,7 +154,7 @@ span > p {
 #weather {
     width: 100%;
     border-radius: 5px;
-    padding-bottom: 3%;
+    padding: 5% 0;
 }
 #weather-container {
     display: inline-block;
@@ -152,7 +168,7 @@ span > p {
 #youtube {
     width: 100%;
     height: 50%;
-    padding: 3% 0%;
+    padding: 5% 0;
     /*background-color: #cccccc;*/
     border-radius: 5px;
 }
@@ -193,17 +209,21 @@ span > p {
 #weatherResults {
     text-align: center;
 }
-
+#weather-container .description {
+    height: 36px;
+}
 .footer {
     text-align: left;
     padding: 4% 4%;
-    position: absolute;
+    position: relative;
     bottom: 0;
-    right: 0;
-    left: 0;
-    color: white;
+    width: 100%;
+    height: 2em;
 }
-
+.footer p {
+    color: white;
+    font-size: small;
+}
 button {
     display: inline-block;
     vertical-align: middle;
@@ -324,6 +344,12 @@ button {
     #news img {
         float: left;
     }
+    #youtube h2 {
+        width: 92%;
+    }
+    #weather h2 {
+        width: 94%
+    }
   }
 /*smaller than tablet*/
   @media screen and (max-width: 450px) {
@@ -333,9 +359,12 @@ button {
     }
   }
   @media screen and (max-width: 775px) {
-    /*.nav ul {
-        display: none;
-    }*/
+    h1 {
+        font-size: 165%;
+    }
+    h2 {
+        font-size: 125%;
+    }
     header p {
         padding: 2% 0 2% 0;
         line-height: 130%;
@@ -399,4 +428,7 @@ button {
         vertical-align: middle;
         padding-left: 5%;
         padding-right: 5%;
+}
+@media screen and (min-width: 1001px) {
+
 }
