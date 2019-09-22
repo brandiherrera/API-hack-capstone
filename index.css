@@ -30,6 +30,7 @@ h2 {
 }
 #youtube h2 {
     width: 96%;
+
 }
 #weather h2 {
     width: 80%;
@@ -173,7 +174,7 @@ span > p {
     border-radius: 5px;
 }
 #youtubeResults {
-    padding: 2% 2%;
+    padding: 0 2% 2% 2%;
     text-align: center;
 }
 #video-container {
@@ -348,7 +349,7 @@ button {
         width: 92%;
     }
     #weather h2 {
-        width: 94%
+        width: 93%
     }
   }
 /*smaller than tablet*/
@@ -428,5 +429,9 @@ button {
         vertical-align: middle;
         padding-left: 5%;
         padding-right: 5%;
+    }
 }
+@media screen and (min-width: 1001px) {
+    main {
+        min-height: 20vh;
 }

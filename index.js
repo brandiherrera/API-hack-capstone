@@ -255,14 +255,7 @@ function startSearch() {
         getMoreCityResults(cityName);
     });
 }
-/*
-function hamburgerClick() {
-    $('.hamburger').classList.toggle("show");
-}
-$('.hamburger').on('click', function(event) {
-    event.preventDefault();
 
-})*/
 
 $('.restart').on('click', function(event) {
     event.preventDefault();
