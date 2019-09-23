@@ -16,7 +16,6 @@ function checkValue(inputValue) {
     if (inputValue == null) {
         outputValue = 0;
     }
-    // console.log(outputValue);
     return outputValue;
 };
 
@@ -28,7 +27,6 @@ function checkText(inputText) {
     if (inputText == null) {
         outputText = "";
     }
-    // console.log(outputText);
     return outputText;
 }
 
@@ -40,31 +38,28 @@ function checkURL(inputURL) {
     if (inputURL == null) {
         outputURL = "/";
     }
-    console.log(outputURL);
+    // console.log(outputURL);
     return outputURL;
 }
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    console.log("formatQueryParams complete");
+    // console.log("formatQueryParams complete");
     return queryItems.join('&');
 }
 
 function displayWeatherResults(responseJson) {
-    console.log(responseJson);
+    // console.log(responseJson);
     for (let i = 0; i < responseJson.list.length; i++) {
-        // console.log("forLoop working");
-        console.log(responseJson.list[i].dt_txt.slice(11));
+        // console.log(responseJson.list[i].dt_txt.slice(11));
         checkValue(responseJson.list[i].dt_txt.slice(11))
         if (responseJson.list[i].dt_txt.slice(11) === '12:00:00') {
-            console.log(i);
+            // console.log(i);
 
             let kelvin = checkValue(responseJson.list[i].main.temp);
             let fahrenheit = (kelvin * (9 / 5)) - 459.67
             let weatherIcon = checkURL(responseJson.list[i].weather[0].icon);
-            /*let wind = responseJson.list[i].wind.speed;*/
-            let description = responseJson.list[i].weather[0].description;
             let rawDate = checkText(responseJson.list[i].dt_txt);
             $('#weatherResults').append(
                 `<div id="weather-container" role="text">
@@ -74,40 +69,37 @@ function displayWeatherResults(responseJson) {
             );
         }
     };
-    console.log("displayWeather working");
+    // console.log("displayWeather working");
 };
 
 
 function getWeather(cityName) {
-    console.log(cityName);
+    // console.log(cityName);
     const params = {
         q: cityName,
         APPID: 'c894bfba04e757cc13b20cad7b39e4c6'
     };
     const queryString = formatQueryParams(params);
     const url = weatherUrl + '?' + queryString;
-    console.log(url);
+    // console.log(url);
     fetch(url)
         .then(response => {
             if (response.ok) {
                 return response.json();
             }
-            if (response === 'city not found') {
-                return $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
-            }
             throw new Error(response.statusText);
         })
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
-            console.log(err.message);
-            $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
+            // console.log(err.message);
+            $('#js-error-message-weather').html(`<p>Weather for this location is unavailable at this time, please try again later.</p>`);
         });
-    console.log("getWeather working");
+    // console.log("getWeather working");
 }
 
 
 function displayNewsResults(responseJson) {
-    console.log(responseJson);
+    // console.log(responseJson);
 
     for (let i = 0; i < 6; i++) {
         let articleTitle = responseJson.articles[i].title;
@@ -123,7 +115,7 @@ function displayNewsResults(responseJson) {
         `
         )
     };
-    console.log("displayNewsResults working");
+    // console.log("displayNewsResults working");
     $('.accordion').on('click', function () {
         this.classList.toggle("active");
         let panel = this.nextElementSibling;
@@ -133,7 +125,7 @@ function displayNewsResults(responseJson) {
         } else {
             panel.style.display = "block";
         }
-        console.log("accordion click working");
+        // console.log("accordion click working");
     });
 }
 
@@ -146,21 +138,21 @@ $('.accordion-landing').on('click', function () {
     } else {
         panel.style.display = "block";
     }
-    console.log("accordion click working");
+    // console.log("accordion click working");
 });
 
 function getNews(cityName) {
     const strCityName = cityName;
-    console.log(strCityName);
+    // console.log(strCityName);
     const cityNameOnly = strCityName.split(",").shift();
-    console.log(cityNameOnly);
+    // console.log(cityNameOnly);
     const params = {
         q: cityNameOnly,
         apiKey: '5358d981d8e94c6ca98e1b3831164df1'
     }
     const queryString = formatQueryParams(params);
     const url = newsUrl + '?' + queryString;
-    console.log(url);
+    // console.log(url);
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -170,14 +162,14 @@ function getNews(cityName) {
         })
         .then(responseJson => displayNewsResults(responseJson))
         .catch(err => {
-            console.log(err.message);
-            $('#js-error-message-news').text(`Something went wrong, please try again: ${err.message}`);
+            // console.log(err.message);
+            $('#js-error-message-news').html(`<p>News for this location is unavailable at this time, please try again later.</p>`);
         });
-    console.log("getNews working");
+    // console.log("getNews working");
 }
 
 function displayWikiResults(responseJson) {
-    console.log(responseJson);
+    // console.log(responseJson);
     let pagesIdSearch = Object.keys(responseJson.query.pages);
     let wikiPagesId = responseJson.query.pages[pagesIdSearch].pageid;
     let wikiPic = responseJson.query.pages[wikiPagesId].thumbnail.source;
@@ -191,15 +183,15 @@ function displayWikiResults(responseJson) {
         </div>
         `
     )
-    console.log("getWikiResults working");
+    // console.log("getWikiResults working");
 }
 
 function getWiki(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
-    console.log(cityNameOnly);
+    // console.log(cityNameOnly);
     let url = "https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&prop=pageimages|images|info|description|extracts&piprop=thumbnail&pithumbsize=1020&explaintext&exsentences=4&exlimit=1&generator=search&gsrlimit=1&gsrsearch=" + encodeURIComponent(cityNameOnly);
-    console.log(url);
+    // console.log(url);
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -209,13 +201,13 @@ function getWiki(cityName) {
         })
         .then(responseJson => displayWikiResults(responseJson))
         .catch(err => {
-            $('#js-error-message-wiki').text(`Something went wrong, please try again: ${err.message}`);
+            $('#js-error-message-wiki').html(`<p>Wikipedia results for this location are unavailable at this time, please try again later.</p>`);
         });
-    console.log("getWiki working");
+    // console.log("getWiki working");
 }
 
 function displayYoutubeResults(responseJson) {
-    console.log(responseJson)
+    // console.log(responseJson)
     for (let i = 0; i < responseJson.items.length; i++) {
         checkText(responseJson.items[i].id.videoId);
         $('#youtubeResults').append(
@@ -240,7 +232,7 @@ function getYoutube(cityName) {
     }
     const queryString = formatQueryParams(params);
     const url = youtubeUrl + '?' + queryString;
-    console.log(url);
+    // console.log(url);
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -250,19 +242,19 @@ function getYoutube(cityName) {
         })
         .then(responseJson => displayYoutubeResults(responseJson))
         .catch(err => {
-            console.log(err.message);
-            $('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);
+            // console.log(err.message);
+            $('#js-error-message-youtube').html(`<p>YouTube results for this location are unavailable at this time, please try again later.</p>`);
         });
-    console.log("getYoutube working");
+    // console.log("getYoutube working");
 }
 
 function getCityResults(cityName) {
-    console.log("getCityResults working")
+    // console.log("getCityResults working")
     getWeather(cityName);
 }
 
 function getMoreCityResults(cityName) {
-    console.log("getMoreCityResults working")
+    // console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
     getYoutube(cityName);
@@ -276,9 +268,9 @@ function startSearch() {
     $('form').submit(event => {
         event.preventDefault();
         const cityName = $('option:selected').text().trim().replace(" , ", ", ");
-        console.log(cityName);
+        // console.log(cityName);
         getCityResults(cityName);
-        console.log("getCityResults working");
+        // console.log("getCityResults working");
         getMoreCityResults(cityName);
     });
 }
@@ -287,12 +279,12 @@ function startSearch() {
 $('.restart').on('click', function (event) {
     event.preventDefault();
     location.reload();
-    console.log("restartSearch working");
+    // console.log("restartSearch working");
 });
 
 
 
 $(function () {
-    console.log("app working");
+    // console.log("app working");
     startSearch();
 })

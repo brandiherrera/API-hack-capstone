@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Explore various destinations around the globe.">
     <title>Explore Travel Destinations - API Capstone</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <meta name="description" content="Explore various destinations around the globe.">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e5db14ff37.js" rel="stylesheet"></script>
 </head>
 
 <body>
     <nav role="navigation" class="nav hidden">
-        <!--<div class="hamburger" role="menu">&#9776;</div>-->
         <ul role="list">
             <li><a href="#wiki">Wiki</a></li>
             <li><a href="#news">News</a></li>
@@ -30,207 +29,207 @@
         <form class="js-form" id="form" role="form">
             <select name="js-city-search" id="js-city-search" role="listbox">
                 <optgroup role="group" label="Europe">
-                    <option>	Amsterdam, Netherlands	</option>
-                    <option>	Athens, Greece	</option>
-                    <option>	Barcelona, Spain	</option>
-                    <option>	Berlin, Germany	</option>
-                    <option>	Bled, Slovenia	</option>
-                    <option>	Bratislava, Slovakia	</option>
-                    <option>	Brussels, Belgium	</option>
-                    <option>	Bucharest, Romania	</option>
-                    <option>	Budapest, Hungary	</option>
-                    <option>	Copenhagen, Denmark	</option>
-                    <option>	Dublin, Ireland	</option>
-                    <option>	Dubrovnik, Croatia	</option>
-                    <option>	Edinburgh, Scotland	</option>
-                    <option>	Florence, Italy	</option>
-                    <option>	Helsinki, Finland	</option>
-                    <option>	Innsbruck, Austria	</option>
-                    <option>	Krakow, Poland	</option>
-                    <option>	Lisbon, Portugal	</option>
-                    <option>	London, England	</option>
-                    <option>	Luxembourg, Luxembourg	</option>
-                    <option>	Madrid, Spain	</option>
-                    <option>	Minsk, Belarus	</option>
-                    <option>	Monaco, Monaco	</option>
-                    <option>	Munich, Germany	</option>
-                    <option>	Naples, Italy	</option>
-                    <option>	Nice, France	</option>
-                    <option>	Oslo, Norway	</option>
-                    <option>	Paris, France	</option>
-                    <option>	Prague, Czechia	</option>
-                    <option>	Reykjavik, Iceland	</option>
-                    <option>	Riga, Latvia	</option>
-                    <option>	Rome, Italy	</option>
-                    <option>	San Sebastian, Spain	</option>
-                    <option>	Santorini, Greece	</option>
-                    <option>	Sarajevo, Bosnia and Herzegovina	</option>
-                    <option>	Seville, Spain	</option>
-                    <option>	Siena, Italy	</option>
-                    <option>	Sofia, Bulgaria	</option>
-                    <option>	Stockholm, Sweden	</option>
-                    <option>	Valletta, Malta	</option>
-                    <option>    Vienna, Austria </option>
-                    <option>	Venice, Italy	</option>
-                    <option>	Vilnius, Lithuania	</option>
-                    <option>	Zagreb, Croatia	</option>
-                    <option>	Zurich, Switzerland	</option>
+                    <option>Amsterdam, Netherlands</option>
+                    <option>Athens, Greece</option>
+                    <option>Barcelona, Spain</option>
+                    <option>Berlin, Germany</option>
+                    <option>Bled, Slovenia</option>
+                    <option>Bratislava, Slovakia</option>
+                    <option>Brussels, Belgium</option>
+                    <option>Bucharest, Romania</option>
+                    <option>Budapest, Hungary</option>
+                    <option>Copenhagen, Denmark</option>
+                    <option>Dublin, Ireland</option>
+                    <option>Dubrovnik, Croatia</option>
+                    <option>Edinburgh, Scotland</option>
+                    <option>Florence, Italy</option>
+                    <option>Helsinki, Finland</option>
+                    <option>Innsbruck, Austria</option>
+                    <option>Krakow, Poland</option>
+                    <option>Lisbon, Portugal</option>
+                    <option>London, England</option>
+                    <option>Luxembourg, Luxembourg</option>
+                    <option>Madrid, Spain</option>
+                    <option>Minsk, Belarus</option>
+                    <option>Monaco, Monaco</option>
+                    <option>Munich, Germany</option>
+                    <option>Naples, Italy</option>
+                    <option>Nice, France</option>
+                    <option>Oslo, Norway</option>
+                    <option>Paris, France</option>
+                    <option>Prague, Czechia</option>
+                    <option>Reykjavik, Iceland</option>
+                    <option>Riga, Latvia</option>
+                    <option>Rome, Italy</option>
+                    <option>San Sebastian, Spain</option>
+                    <option>Santorini, Greece</option>
+                    <option>Sarajevo, Bosnia and Herzegovina</option>
+                    <option>Seville, Spain</option>
+                    <option>Siena, Italy</option>
+                    <option>Sofia, Bulgaria</option>
+                    <option>Stockholm, Sweden</option>
+                    <option>Valletta, Malta</option>
+                    <option>Vienna, Austria</option>
+                    <option>Venice, Italy</option>
+                    <option>Vilnius, Lithuania</option>
+                    <option>Zagreb, Croatia</option>
+                    <option>Zurich, Switzerland</option>
                 </optgroup>
                 <optgroup role="group" label="North America">
-                    <option>	Anchorage, US	</option>
-                    <option>	Atlanta, US	</option>
-                    <option>	Austin, US	</option>
-                    <option>	Calgary, Canada	</option>
-                    <option>	Chicago, US	</option>
-                    <option>	Las Vegas, US	</option>
-                    <option>	Los Angeles, US	</option>
-                    <option>	Miami, US	</option>
-                    <option>	Montreal, Canada	</option>
-                    <option>	New Orleans, US	</option>
-                    <option>	New York, US	</option>
-                    <option>	Philadelphia, US	</option>
-                    <option>	Portland, US	</option>
-                    <option>	Quebec City, Canada	</option>
-                    <option>	Raleigh, US	</option>
-                    <option>	San Diego, US	</option>
-                    <option>	San Francisco, US	</option>
-                    <option>	Savannah, US	</option>
-                    <option>	Seattle, US	</option>
-                    <option>	Toronto, Canada	</option>
-                    <option>	Vancouver, Canada	</option>
-                    <option>	Washington District of Columbia, US	</option>
+                    <option>Anchorage, US</option>
+                    <option>Atlanta, US</option>
+                    <option>Austin, US</option>
+                    <option>Calgary, Canada</option>
+                    <option>Chicago, US</option>
+                    <option>Las Vegas, US</option>
+                    <option>Los Angeles, US</option>
+                    <option>Miami, US</option>
+                    <option>Montreal, Canada</option>
+                    <option>New Orleans, US</option>
+                    <option>New York, US</option>
+                    <option>Philadelphia, US</option>
+                    <option>Portland, US</option>
+                    <option>Quebec City, Canada</option>
+                    <option>Raleigh, US</option>
+                    <option>San Diego, US</option>
+                    <option>San Francisco, US</option>
+                    <option>Savannah, US</option>
+                    <option>Seattle, US</option>
+                    <option>Toronto, Canada</option>
+                    <option>Vancouver, Canada</option>
+                    <option>Washington District of Columbia, US</option>
                 </optgroup>
                 <optgroup role="group" label="South America">
-                    <option>	Arequipa, Peru	</option>
-                    <option>	Bogota, Colombia	</option>
-                    <option>	Brasilia, Brazil	</option>
-                    <option>	Buenos Aires, Argentina	</option>
-                    <option>	Caracas, Venezuela	</option>
-                    <option>	Cartagena, Colombia	</option>
-                    <option>	Cayenne, French Guiana	</option>
-                    <option>	Cusco, Peru	</option>
-                    <option>	Georgetown, Guyana	</option>
-                    <option>	Medellin, Colombia	</option>
-                    <option>	Quito, Ecuador	</option>
-                    <option>	Rio De Janeiro, Brazil	</option>
-                    <option>	Santiago, Chile	</option>
-                    <option>	Sucre La Paz, Bolivia	</option>
+                    <option>Arequipa, Peru</option>
+                    <option>Bogota, Colombia</option>
+                    <option>Brasilia, Brazil</option>
+                    <option>Buenos Aires, Argentina</option>
+                    <option>Caracas, Venezuela</option>
+                    <option>Cartagena, Colombia</option>
+                    <option>Cayenne, French Guiana</option>
+                    <option>Cusco, Peru</option>
+                    <option>Georgetown, Guyana</option>
+                    <option>Medellin, Colombia</option>
+                    <option>Quito, Ecuador</option>
+                    <option>Rio De Janeiro, Brazil</option>
+                    <option>Santiago, Chile</option>
+                    <option>Sucre La Paz, Bolivia</option>
                 </optgroup>
                 <optgroup role="group" label="Africa">
-                    <option>	Cairo, Egypt	</option>
-                    <option>	Cape Town, South Africa	</option>
-                    <option>	Fes, Morocco	</option>
-                    <option>	Johannesburg, South Africa	</option>
-                    <option>	Marrakesh, Morocco	</option>
-                    <option>	Nairobi, Kenya	</option>
-                    <option>	Zanzibar, Tanzania	</option>
+                    <option>Cairo, Egypt</option>
+                    <option>Cape Town, South Africa</option>
+                    <option>Fes, Morocco</option>
+                    <option>Johannesburg, South Africa</option>
+                    <option>Marrakesh, Morocco</option>
+                    <option>Nairobi, Kenya</option>
+                    <option>Zanzibar, Tanzania</option>
                 </optgroup>
                 <optgroup role="group" label="Asia">
-                    <option>	Abu Dhabi, UAE	</option>
-                    <option>	Ankara, Turkey	</option>
-                    <option>	Baku, Azerbaijan	</option>
-                    <option>	Bangkok, Thailand	</option>
-                    <option>	Beijing, China	</option>
-                    <option>	Beirut, Lebanon	</option>
-                    <option>	Chiang Mai, Thailand	</option>
-                    <option>	Damascus, Syria	</option>
-                    <option>	Delhi, India	</option>
-                    <option>	Dhaka, Bangladesh	</option>
-                    <option>	Doha, Qatar	</option>
-                    <option>	Dubai, UAE	</option>
-                    <option>	Hanoi, Vietnam	</option>
-                    <option>	Hiroshima, Japan	</option>
-                    <option>	Ho Chi Minh City, Vietnam	</option>
-                    <option>	Hong Kong, China	</option>
-                    <option>	Istanbul, Turkey	</option>
-                    <option>	Jaipur, India	</option>
-                    <option>	Jakarta, Indonesia	</option>
-                    <option>	Jeddah, Saudi Arabia	</option>
-                    <option>	Jerusalem, Israel	</option>
-                    <option>	Kathmandu, Nepal	</option>
-                    <option>	Kiev, Ukraine	</option>
-                    <option>	Kuala Lumpur, Malaysia	</option>
-                    <option>	Kyoto, Japan	</option>
-                    <option>	Macau, China	</option>
-                    <option>	Manila, Philippines	</option>
-                    <option>	Moscow, Russia	</option>
-                    <option>	Mumbai, India	</option>
-                    <option>	Muscat, Oman	</option>
-                    <option>	Phnom Penh, Cambodia	</option>
-                    <option>	Pyongyang, North Korea	</option>
-                    <option>	Seoul, South Korea	</option>
-                    <option>	Shanghai, China	</option>
-                    <option>	Singapore, Singapore	</option>
-                    <option>	Sochi, Russia	</option>
-                    <option>	St. Petersburg, Russia	</option>
-                    <option>	Taipei, Taiwan	</option>
-                    <option>	Tehran, Iran	</option>
-                    <option>	Tel Aviv, Israel	</option>
-                    <option>	Tokyo, Japan	</option>
+                    <option>Abu Dhabi, UAE</option>
+                    <option>Ankara, Turkey</option>
+                    <option>Baku, Azerbaijan</option>
+                    <option>Bangkok, Thailand</option>
+                    <option>Beijing, China</option>
+                    <option>Beirut, Lebanon</option>
+                    <option>Chiang Mai, Thailand</option>
+                    <option>Damascus, Syria</option>
+                    <option>Delhi, India</option>
+                    <option>Dhaka, Bangladesh</option>
+                    <option>Doha, Qatar</option>
+                    <option>Dubai, UAE</option>
+                    <option>Hanoi, Vietnam</option>
+                    <option>Hiroshima, Japan</option>
+                    <option>Ho Chi Minh City, Vietnam</option>
+                    <option>Hong Kong, China</option>
+                    <option>Istanbul, Turkey</option>
+                    <option>Jaipur, India</option>
+                    <option>Jakarta, Indonesia</option>
+                    <option>Jeddah, Saudi Arabia</option>
+                    <option>Jerusalem, Israel</option>
+                    <option>Kathmandu, Nepal</option>
+                    <option>Kiev, Ukraine</option>
+                    <option>Kuala Lumpur, Malaysia</option>
+                    <option>Kyoto, Japan</option>
+                    <option>Macau, China</option>
+                    <option>Manila, Philippines</option>
+                    <option>Moscow, Russia</option>
+                    <option>Mumbai, India</option>
+                    <option>Muscat, Oman</option>
+                    <option>Phnom Penh, Cambodia</option>
+                    <option>Pyongyang, North Korea</option>
+                    <option>Seoul, South Korea</option>
+                    <option>Shanghai, China</option>
+                    <option>Singapore, Singapore</option>
+                    <option>Sochi, Russia</option>
+                    <option>St. Petersburg, Russia</option>
+                    <option>Taipei, Taiwan</option>
+                    <option>Tehran, Iran</option>
+                    <option>Tel Aviv, Israel</option>
+                    <option>Tokyo, Japan</option>
                 </optgroup>
                 <optgroup role="group" label="Australia/Oceania">
-                    <option> Apia, Samoa	</option>
-                    <option> Auckland, New Zealand  </option>
-                    <option> Canberra, Australia</option>
-                    <option> Christchurch, New Zealand  </option>
-                    <option> Hobart, Australia  </option>
-                    <option> Melbourne, Australia  </option>
-                    <option> Perth, Australia  </option>
-                    <option> Suva, Fiji	</option>
-                    <option> Sydney, Australia  </option>
-                    <option> Wellington, New Zealand  </option>
+                    <option>Apia, Samoa</option>
+                    <option>Auckland, New Zealand</option>
+                    <option>Canberra, Australia</option>
+                    <option>Christchurch, New Zealand</option>
+                    <option>Hobart, Australia</option>
+                    <option>Melbourne, Australia</option>
+                    <option>Perth, Australia</option>
+                    <option>Suva, Fiji</option>
+                    <option>Sydney, Australia</option>
+                    <option>Wellington, New Zealand</option>
                 </optgroup>
                 <optgroup role="group" label="Central America/Caribbean Islands">
-                    <option>	Belize City, Belize	</option>
-                    <option>	Bridgetown, Barbados	</option>
-                    <option>	Havana, Cuba	</option>
-                    <option>	Mexico City, Mexico	</option>
-                    <option>	Cancun, Mexico	</option>
-                    <option>	Panama City, Panama	</option>
-                    <option>	Puerto Vallarta, Mexico	</option>
-                    <option>	San Juan, Puerto Rico	</option>
-                    <option>	San Salvador, El Salvador	</option>
-                    <option>	Santo Domingo, Dominican Republic	</option>
+                    <option>Belize City, Belize</option>
+                    <option>Bridgetown, Barbados</option>
+                    <option>Havana, Cuba</option>
+                    <option>Mexico City, Mexico</option>
+                    <option>Cancun, Mexico</option>
+                    <option>Panama City, Panama</option>
+                    <option>Puerto Vallarta, Mexico</option>
+                    <option>San Juan, Puerto Rico</option>
+                    <option>San Salvador, El Salvador</option>
+                    <option>Santo Domingo, Dominican Republic</option>
                 </optgroup>
             </select>
             <button type="submit">Explore</button>
         </form>
-        <p role="text">Explore curated content such as a location overview, current news headlines, a five day forecast, and travel-based videos to set you on your next adventure!</p>        
+        <p role="text">Explore curated content such as a location overview, current news headlines, a five day forecast,
+            and travel-based videos to set you on your next adventure!</p>
         </div>
     </header>
-    
+
     <main role="main" class="main">
         <section id="js-features" class="features hidden" role="region">
-            <div id="wiki" role="text"><h2>Location Overview</h2>
+            <div id="wiki" role="text">
+                <h2>Location Overview</h2>
                 <div id="wikiResults"></div>
                 <div id="js-error-message-wiki" class="error-message"></div>
             </div>
-            <div id="news" role="text"><h2>Trending Headlines</h2>
+            <div id="news" role="text">
+                <h2>Trending Headlines</h2>
                 <div id="newsResults"></div>
                 <div id="js-error-message-news" class="error-message"></div>
             </div>
-            <div id="youtube" role="text"><h2>Videos</h2>
+            <div id="youtube" role="text">
+                <h2>Videos</h2>
                 <div id="youtubeResults"></div>
                 <div id="js-error-message-youtube" class="error-message"></div>
             </div>
-            <div id="weather" role="text"><h2>5 Day Forecast</h2>
+            <div id="weather" role="text">
+                <h2>5 Day Forecast</h2>
                 <div id="weatherResults"></div>
                 <div id="js-error-message-weather" class="error-message"></div>
             </div>
         </section>
         <section class="interactive hidden" role="region">
-                <button type="submit" class="restart">Explore another city</button>
-                <!--<button type="submit" class="suggestion">Have a city you'd like to add?</button>-->
+            <button type="submit" class="restart">Explore another city</button>
         </section>
-
     </main>
     <footer role="contentinfo" class="footer">
         <p>©2019 Brandi Herrera</p>
     </footer>
-
     <script src="index.js"></script>
-    
 </body>
-
 
 </html>

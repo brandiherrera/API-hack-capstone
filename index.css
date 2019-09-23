@@ -291,6 +291,12 @@ button {
     height: 75%;
     overflow-y: scroll;
   }
+
+.error-message p {
+    color: white;
+    /* font-size: smaller; */
+    text-align: center;
+}
 /*
   .accordion-landing {
     display: inline-block;
