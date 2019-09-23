@@ -2,13 +2,11 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
-
 body {
     padding: 10% 10% 5% 10%;
     background: url("https://www.themandagies.com/wp-content/uploads/2018/07/Moraine-Lake-and-Lake-Louise-Sunrise-Banff-Alberta-4.jpg") fixed;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 header > h1, .nav, h2, h3 {
     font-family: 'Libre Baskerville', serif;
@@ -35,7 +33,6 @@ h2 {
 #weather h2 {
     width: 80%;
 }
-
 p {
     font-family: 'Libre Franklin', sans-serif;
 }
@@ -59,7 +56,6 @@ ul li {
     display: inline;
     padding-right: 3%
 }
-
 .nav div {
     position: fixed;
     top: 0;
@@ -78,28 +74,22 @@ header {
     background: white;
     position: relative;
 }
-
 header > h1, p {
     color: #595959;
 }
-
 header p {
     padding: 8% 0 5% 0;
     line-height: 150%;
 }
-
 #js-city-search {
     width: 50%;
 }
-
 button {
     background-color: slategray;
 }
-
 .hidden {
     display: none;
 }
-
 main {
     padding-top: 30px;
     min-height: 50vh;
@@ -107,11 +97,9 @@ main {
 h2, h3 {
     color: white;
 }
-
 ul li {
     list-style-type: none;
 }
-
 #news {
     width: 100%;
     padding: 5% 0;
@@ -121,7 +109,6 @@ ul li {
     position: relative;
     padding-right: 3%;
 }
-
 #wiki {
     text-align: center;
     padding: 5% 0;
@@ -165,12 +152,10 @@ span > p {
     text-align: center;
     margin: 0 .5%;
 }
-
 #youtube {
     width: 100%;
     height: 50%;
     padding: 5% 0;
-    /*background-color: #cccccc;*/
     border-radius: 5px;
 }
 #youtubeResults {
@@ -202,11 +187,9 @@ span > p {
 #video-container button {
         padding: 1% 2.5%;
 }
-
 .interactive {
     text-align: center;
 }
-
 #weatherResults {
     text-align: center;
 }
@@ -235,13 +218,12 @@ button {
     color: #666666;
     background: #ffffff;
     border: 1px solid #666666;
-  }
-  button:hover {
+}
+button:hover {
     border: 1px solid #008080;
     background: #008080;
     color: #ffffff;
-  }
-
+}
 .accordion {
     display: inline-block;
     padding: 2% 3%;
@@ -256,29 +238,29 @@ button {
     vertical-align: middle;
     outline: none;
     transition: 0.5s;
-  }
-  .active, .accordion:hover {
+}
+.active, .accordion:hover {
     background-color: #cccccc; 
     border: none;
-  }
-  .active {
+}
+.active {
     margin-bottom: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-  }
-  .accordion:before {
-      content: "\f138";
-      font-family: 'FontAwesome';
-      padding-right: 2%;
-      padding-bottom: 2%;
-  }
- .active:before {
-    content: "\f13a";
+}
+.accordion:before {
+    content: "\f138";
     font-family: 'FontAwesome';
     padding-right: 2%;
     padding-bottom: 2%;
-  }
-  .panel {
+}
+.active:before {
+    content: "\f13a";
+    font-family: 'FontAwesome';
+    padding-right: 2%;
+    padding-bottom: 2%;  
+}
+.panel {
     padding: 2% 3%;
     margin-bottom: 1%;
     border-bottom-left-radius: 5px;
@@ -286,68 +268,17 @@ button {
     display: none;
     background-color: #e6e6e6;
     overflow: hidden;
-  }
-  .article-content {
+}
+.article-content {
     height: 75%;
     overflow-y: scroll;
-  }
-
+}
 .error-message p {
     color: white;
-    /* font-size: smaller; */
     text-align: center;
 }
-/*
-  .accordion-landing {
-    display: inline-block;
-    padding: 2% 3%;
-    margin-bottom: .5%;
-    color: #444;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 60%;
-    border: none;
-    text-align: left;
-    outline: none;
-    transition: 0.4s;
-  }
-  .active, .accordion-landing:hover {
-    background-color: #cccccc; 
-    border: none;
-  }
-  .active {
-    margin-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .accordion-landing:before {
-      content: "\f138";
-      font-family: 'FontAwesome';
-      padding-right: 2%;
-      padding-bottom: 2%;
-  }
- .active:before {
-    content: "\f13a";
-    font-family: 'FontAwesome';
-    padding-right: 2%;
-    padding-bottom: 2%;
-  }
-  .panel-landing {
-    padding: 2% 3%;
-    margin-bottom: 1%;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    width: 60%;
-    display: none;
-    background-color: #e6e6e6;
-    overflow: hidden;
-  }*/
 /*larger than tablet*/
-  @media screen and (min-width: 776px) {
-    /*.nav div {
-        display: none;
-    }*/
+@media screen and (min-width: 776px) {
     #news img {
         float: left;
     }
@@ -357,15 +288,15 @@ button {
     #weather h2 {
         width: 93%
     }
-  }
+}
 /*smaller than tablet*/
-  @media screen and (max-width: 450px) {
+@media screen and (max-width: 450px) {
     #city-image {
         float: bottom;
         box-align: bottom;
     }
-  }
-  @media screen and (max-width: 775px) {
+}
+@media screen and (max-width: 775px) {
     h1 {
         font-size: 165%;
     }
@@ -416,7 +347,6 @@ button {
         margin-left: 0%;
         margin-bottom: 2%;
     }
-
 }
 @media screen and (max-width: 1000px) {
     header {
@@ -440,5 +370,5 @@ button {
 @media screen and (min-width: 1001px) {
     main {
         min-height: 20vh;
-}
+    }
 }
