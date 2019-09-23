@@ -57,7 +57,7 @@ function displayWeatherResults(responseJson) {
             let rawDate = checkText(responseJson.list[i].dt_txt);
             $('#weatherResults').append(
                 `<div id="weather-container" role="text">
-                <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
+                <img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
                 <h4>${rawDate}</h4>
                 <p>${fahrenheit.toFixed(0)}°F</p>`
             );
