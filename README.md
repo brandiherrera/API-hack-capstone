@@ -4,8 +4,6 @@
     <p>I wanted to create an app where users could find content important to travelers combined all in one place.</p>
 <h2>Demo</h2>
 <a href="https://brandiherrera.github.io/travel-destination-search-api-capstone/">Live Demo</a>
-<!--<h2>Build Status</h2>
-    <p></p>-->
 <h2>Screenshots</h2>
     <h3>Landing Page:</h3>
         <img src="images/landing-page.png" alt="landing page image"/>
