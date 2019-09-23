@@ -4,51 +4,78 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast"
 const newsUrl = "https://newsapi.org/v2/everything"
 const youtubeUrl = "https://www.googleapis.com/youtube/v3/search"
 
+
+function checkValue(inputValue) {
+    let outputValue = inputValue;
+    if (inputValue == "") {
+        outputValue = 0;
+    }
+    if (inputValue == undefined) {
+        outputValue = 0;
+    }
+    if (inputValue == null) {
+        outputValue = 0;
+    }
+    // console.log(outputValue);
+    return outputValue;
+};
+
+function checkText(inputText) {
+    let outputText = inputText;
+    if (inputText == undefined) {
+        outputText = "";
+    }
+    if (inputText == null) {
+        outputText = "";
+    }
+    // console.log(outputText);
+    return outputText;
+}
+
+function checkURL(inputURL) {
+    let outputURL = inputURL;
+    if (inputURL == undefined) {
+        outputURL = "/";
+    }
+    if (inputURL == null) {
+        outputURL = "/";
+    }
+    console.log(outputURL);
+    return outputURL;
+}
+
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-        console.log("formatQueryParams complete");
-        return queryItems.join('&');
+    console.log("formatQueryParams complete");
+    return queryItems.join('&');
 }
 
 function displayWeatherResults(responseJson) {
     console.log(responseJson);
-  /*$(function(event) {*/
-        for (let i=0; i<=41; i++) {
-        console.log("forLoop working");
+    for (let i = 0; i < responseJson.list.length; i++) {
+        // console.log("forLoop working");
+        console.log(responseJson.list[i].dt_txt.slice(11));
+        checkValue(responseJson.list[i].dt_txt.slice(11))
         if (responseJson.list[i].dt_txt.slice(11) === '12:00:00') {
-        console.log(i);
-        /*return i*/
+            console.log(i);
 
-    let cityName = $('option:selected').text().trim().replace(" , ", ", ");
-    let kelvin = responseJson.list[i].main.temp;
-    let fahrenheit = (kelvin * (9/5)) - 459.67
-    let weatherIcon = responseJson.list[i].weather[0].icon;
-    let wind = responseJson.list[i].wind.speed;
-    let description = responseJson.list[i].weather[0].description;
-    let rawDate = responseJson.list[i].dt_txt;
-/*
-    $(function() {
-        $(rawDate).shift();
-        console.log(rawDate);
-    }
-    $(rawDate).shift();
-    console.log($(rawDate).shift());*/
-
-    $('#weatherResults').append(
-        `
-        <div id="weather-container" role="text">
-        <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
-        <h4>${rawDate}</h4>
-        <p>${fahrenheit.toFixed(0)}°F</p>
-        <p class="description">${description}</p>
-        
-        `
-    )};
+            let kelvin = checkValue(responseJson.list[i].main.temp);
+            let fahrenheit = (kelvin * (9 / 5)) - 459.67
+            let weatherIcon = checkURL(responseJson.list[i].weather[0].icon);
+            /*let wind = responseJson.list[i].wind.speed;*/
+            let description = responseJson.list[i].weather[0].description;
+            let rawDate = checkText(responseJson.list[i].dt_txt);
+            $('#weatherResults').append(
+                `<div id="weather-container" role="text">
+                <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="Weather icon" class="weather-icon" />
+                <h4>${rawDate}</h4>
+                <p>${fahrenheit.toFixed(0)}°F</p>`
+            );
+        }
     };
-}
-
-
+    console.log("displayWeather working");
+};
 
 
 function getWeather(cityName) {
@@ -73,20 +100,20 @@ function getWeather(cityName) {
         .then(responseJson => displayWeatherResults(responseJson))
         .catch(err => {
             console.log(err.message);
-            /*$('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);*/
+            $('#js-error-message-weather').text(`Something went wrong, please try again: ${err.message}`);
         });
-        console.log("getWeather working");
+    console.log("getWeather working");
 }
 
 
 function displayNewsResults(responseJson) {
     console.log(responseJson);
-    
-    for (let i=0; i<6; i++) {
-    let articleTitle = responseJson.articles[i].title;
 
-    $('#newsResults').append(
-        `
+    for (let i = 0; i < 6; i++) {
+        let articleTitle = responseJson.articles[i].title;
+
+        $('#newsResults').append(
+            `
         <div class="accordion" role="menu">${articleTitle}</div>
             <div class="panel" role="menuitem">
                 <img src="${responseJson.articles[i].urlToImage}" />
@@ -94,32 +121,33 @@ function displayNewsResults(responseJson) {
                 <a href="${responseJson.articles[i].url}" target="_blank"><button class="open">Read More</button></a>
             </div>
         `
-    )};
+        )
+    };
     console.log("displayNewsResults working");
-    $('.accordion').on('click', function() {
+    $('.accordion').on('click', function () {
         this.classList.toggle("active");
         let panel = this.nextElementSibling;
-        
+
         if (panel.style.display === "block") {
             panel.style.display = "none";
-          } else {
+        } else {
             panel.style.display = "block";
-          }
-    console.log("accordion click working");
-        });
+        }
+        console.log("accordion click working");
+    });
 }
 
-$('.accordion-landing').on('click', function() {
+$('.accordion-landing').on('click', function () {
     this.classList.toggle("active");
     let panel = this.nextElementSibling;
-    
+
     if (panel.style.display === "block") {
         panel.style.display = "none";
-      } else {
+    } else {
         panel.style.display = "block";
-      }
-console.log("accordion click working");
-    });
+    }
+    console.log("accordion click working");
+});
 
 function getNews(cityName) {
     const strCityName = cityName;
@@ -145,7 +173,7 @@ function getNews(cityName) {
             console.log(err.message);
             $('#js-error-message-news').text(`Something went wrong, please try again: ${err.message}`);
         });
-        console.log("getNews working");
+    console.log("getNews working");
 }
 
 function displayWikiResults(responseJson) {
@@ -183,32 +211,33 @@ function getWiki(cityName) {
         .catch(err => {
             $('#js-error-message-wiki').text(`Something went wrong, please try again: ${err.message}`);
         });
-        console.log("getWiki working");
+    console.log("getWiki working");
 }
 
 function displayYoutubeResults(responseJson) {
     console.log(responseJson)
-    for (let i=0; i<10; i++) {
-    let video = responseJson.items[i];
-    $('#youtubeResults').append(
-        `
-        <div id="video-container" role="text">
+    for (let i = 0; i < 10; i++) {
+        checkText(responseJson.items[i].id.videoId);
+
+        /*let video = responseJson.items[i];*/
+        $('#youtubeResults').append(
+            `<div id="video-container" role="text">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
         <h3>${responseJson.items[i].snippet.title}</h3>
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><button class="watch">Watch Video</button></a>
-        </div>
-        `
-    )};
+        </div>`
+        )
+    };
 }
 
 function getYoutube(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
     const params = {
-        q: 'travel&'+cityNameOnly,
+        q: 'travel&' + cityNameOnly,
         part: 'snippet',
         type: 'video',
-        maxResults: '6',
+        maxResults: '3',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -224,9 +253,9 @@ function getYoutube(cityName) {
         .then(responseJson => displayYoutubeResults(responseJson))
         .catch(err => {
             console.log(err.message);
-            /*$('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);*/
+            $('#js-error-message-youtube').text(`Something went wrong, please try again: ${err.message}`);
         });
-        console.log("getYoutube working");
+    console.log("getYoutube working");
 }
 
 function getCityResults(cityName) {
@@ -238,7 +267,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    getYoutube(cityName);
+    /*getYoutube(cityName);*/
     $('#header').addClass('hidden');
     $('#js-features').removeClass('hidden');
     $('.nav').removeClass('hidden');
@@ -257,7 +286,7 @@ function startSearch() {
 }
 
 
-$('.restart').on('click', function(event) {
+$('.restart').on('click', function (event) {
     event.preventDefault();
     location.reload();
     console.log("restartSearch working");
@@ -265,8 +294,8 @@ $('.restart').on('click', function(event) {
 
 /*$('.footer').removeClass('hidden');*/
 
-$(function() {
-    console.log("app working"); 
+$(function () {
+    console.log("app working");
     startSearch();
     /*$('.footer').removeClass('hidden');*/
 })
