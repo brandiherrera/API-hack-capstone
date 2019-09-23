@@ -216,10 +216,8 @@ function getWiki(cityName) {
 
 function displayYoutubeResults(responseJson) {
     console.log(responseJson)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < responseJson.items.length; i++) {
         checkText(responseJson.items[i].id.videoId);
-
-        /*let video = responseJson.items[i];*/
         $('#youtubeResults').append(
             `<div id="video-container" role="text">
         <a href="https://www.youtube.com/watch?v=${responseJson.items[i].id.videoId}" target="_blank"><img controls class="videoThumbnail" src="${responseJson.items[i].snippet.thumbnails.medium.url}" /><a/>
@@ -237,7 +235,7 @@ function getYoutube(cityName) {
         q: 'travel&' + cityNameOnly,
         part: 'snippet',
         type: 'video',
-        maxResults: '3',
+        maxResults: '2',
         key: 'AIzaSyB4OGpiDb9zB3bKOfdUxRjPfVuoIrV7ewM'
     }
     const queryString = formatQueryParams(params);
@@ -267,7 +265,7 @@ function getMoreCityResults(cityName) {
     console.log("getMoreCityResults working")
     getNews(cityName);
     getWiki(cityName);
-    /*getYoutube(cityName);*/
+    getYoutube(cityName);
     $('#header').addClass('hidden');
     $('#js-features').removeClass('hidden');
     $('.nav').removeClass('hidden');
@@ -292,10 +290,9 @@ $('.restart').on('click', function (event) {
     console.log("restartSearch working");
 });
 
-/*$('.footer').removeClass('hidden');*/
+
 
 $(function () {
     console.log("app working");
     startSearch();
-    /*$('.footer').removeClass('hidden');*/
 })
