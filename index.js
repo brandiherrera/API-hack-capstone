@@ -4,7 +4,7 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast"
 const newsUrl = "https://newsapi.org/v2/everything"
 const youtubeUrl = "https://www.googleapis.com/youtube/v3/search"
 
-
+// Confirm input is valid to prevent undefined
 function checkValue(inputValue) {
     let outputValue = inputValue;
     if (inputValue == "") {
@@ -41,12 +41,14 @@ function checkURL(inputURL) {
     return outputURL;
 }
 
+// Format parameters to usable URI components for the URL
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
 }
 
+// Display weather results
 function displayWeatherResults(responseJson) {
     for (let i = 0; i < responseJson.list.length; i++) {
         checkValue(responseJson.list[i].dt_txt.slice(11))
@@ -65,7 +67,7 @@ function displayWeatherResults(responseJson) {
     };
 };
 
-
+// Gather weather data from API
 function getWeather(cityName) {
     const params = {
         q: cityName,
@@ -86,7 +88,7 @@ function getWeather(cityName) {
         });
 }
 
-
+// Display news results
 function displayNewsResults(responseJson) {
     for (let i = 0; i < 6; i++) {
         let articleTitle = checkText(responseJson.articles[i].title);
@@ -109,7 +111,7 @@ function displayNewsResults(responseJson) {
         }
     });
 }
-
+// Toggles accordion feature on results page when clicked
 $('.accordion-landing').on('click', function () {
     this.classList.toggle('active');
     let panel = this.nextElementSibling;
@@ -120,6 +122,7 @@ $('.accordion-landing').on('click', function () {
     }
 });
 
+// Gather news data from API
 function getNews(cityName) {
     const strCityName = cityName;
     const cityNameOnly = strCityName.split(",").shift();
@@ -142,6 +145,7 @@ function getNews(cityName) {
         });
 }
 
+// Display wiki results
 function displayWikiResults(responseJson) {
     let pagesIdSearch = Object.keys(responseJson.query.pages);
     let wikiPagesId = checkValue(responseJson.query.pages[pagesIdSearch].pageid);
@@ -154,6 +158,7 @@ function displayWikiResults(responseJson) {
     )
 }
 
+// Gather wiki data from API
 function getWiki(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
@@ -171,6 +176,7 @@ function getWiki(cityName) {
         });
 }
 
+// Display youtube video results
 function displayYoutubeResults(responseJson) {
     for (let i = 0; i < responseJson.items.length; i++) {
         checkText(responseJson.items[i].id.videoId);
@@ -184,6 +190,7 @@ function displayYoutubeResults(responseJson) {
     };
 }
 
+// Gather youtube video data from API
 function getYoutube(cityName) {
     const strCityName = cityName;
     const cityNameOnly = "'" + strCityName.split(",").shift() + "'"
@@ -209,6 +216,7 @@ function getYoutube(cityName) {
         });
 }
 
+// Calls get feature functions above, hides first page, displays results page
 function getCityResults(cityName) {
     getWiki(cityName);
     getNews(cityName);
@@ -220,6 +228,7 @@ function getCityResults(cityName) {
     $('.interactive').removeClass('hidden');
 }
 
+// Listens to start the city search upon submit on the form
 function startSearch() {
     $('form').submit(event => {
         event.preventDefault();
@@ -228,11 +237,13 @@ function startSearch() {
     });
 }
 
+// Returns to first page
 $('.restart').on('click', function (event) {
     event.preventDefault();
     location.reload();
 });
 
+// Ready on load
 $(function () {
     startSearch();
 })
