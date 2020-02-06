@@ -1,4 +1,4 @@
-<h1>Travel Destination Search</h1>
+<h1>Travodex</h1>
 <p>A travel-inspired city search application. Users select a city and are returned travel information including a brief history, news headlines, videos, and a five day forecast for the chosen city.
 <h2>Motivation</h2>
     <p>I wanted to create an app where users could find content important to travelers combined all in one place.</p>
